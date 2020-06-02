@@ -1,0 +1,257 @@
+.mainContainer {
+  background: $black;
+  padding: 1.1% 1%;
+  font-family: $workSans;
+
+  .navContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-right: 1rem;
+
+    @media only screen and (max-width: 750px) {
+
+      justify-content: space-around;
+
+    }
+
+    .Bars {
+      padding-top: 5px;
+
+      .bars-icon {
+        color: white;
+        font-size: 1.4rem;
+      }
+    }
+
+
+    .Links {
+      width: 60%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin: 0 .4rem;
+
+      a.active {
+        border-bottom: 3px solid #00E6BC;
+      }
+
+      img {
+        height: 2rem;
+        width: auto;
+      }
+
+      .Groa-NavLink {
+        &:hover {
+          color: white;
+        }
+      }
+
+      .NavLink {
+        color: white;
+        text-decoration: none;
+        margin: 0 1%;
+        transition: all 500ms linear;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+
+      .watchlist,
+      .recommended,
+      .explore,
+      .dropdown-hover .angle-down-icon {
+        flex: .000000001;
+        white-space: pre;
+        padding: 0;
+        font-size: 0;
+        margin: 0;
+        opacity: 0;
+      }
+    }
+
+    .searchContainer {
+      background-color: $gray2;
+      padding: .4rem;
+      border-radius: 5px;
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: all 500ms linear;
+      min-width: 20vw;
+
+      .search-wrapper {
+        display: flex;
+        align-items: center;
+        width: 75%;
+      }
+
+      .search-icon,
+      .backspace-icon {
+        color: white;
+        opacity: .4;
+        font-size: 1.2rem;
+        padding: .2rem;
+      }
+
+      .backspace-icon {
+        cursor: pointer;
+      }
+
+      .searchBox {
+        font-size: 1rem;
+        background-color: $gray2;
+        border: none;
+        color: $white;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      // input:-webkit-autofill:active  {
+      //   -webkit-box-shadow: 0 0 0 30px $gray2 inset !important;
+      // }
+      input:-webkit-autofill {
+        -webkit-text-fill-color: $white !important;
+      }
+    }
+
+    button {
+      white-space: nowrap;
+      font-size: 1rem;
+      padding: .4rem;
+      margin: 0 .6rem;
+      border-radius: 5px;
+      background-color: $white;
+      cursor: pointer;
+      transition: all 500ms linear;
+    }
+
+    @media only screen and (max-width: 750px) {
+      .Links {
+        justify-content: space-between;
+        padding: 0%;
+        margin-right: 0%;
+      }
+
+      button {
+        font-size: 0;
+        padding: .2rem;
+        background-color: rgba(28, 28, 28, 0);
+        border: none;
+      }
+
+      .sync-icon {
+        font-size: initial;
+        color: $white;
+      }
+
+      .searchContainer {
+        min-width: 35vw;
+      }
+    }
+
+    .fa-icons {
+      width: 14%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.6rem;
+      color: white;
+    }
+  }
+
+  button.hidden,
+  .searchContainer.hidden,
+  .hidden {
+    min-width: 0;
+    flex: .000000001;
+    white-space: pre;
+    padding: 0;
+    font-size: 0;
+    margin: 0;
+    opacity: 0;
+  }
+
+  .dropdown-hover {
+    padding: .25rem .5rem;
+    position: relative;
+    white-space: nowrap;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .angle-down-icon {
+      padding-left: .5rem;
+    }
+
+    .dropdown-content {
+      display: none;
+    }
+
+    &:hover {
+      .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 2rem;
+        right: .4rem;
+        border-radius: 5px;
+        overflow: hidden;
+        z-index: 5;
+        border: 1px solid $gray1;
+
+        .NavLink {
+          border-top: 1px solid $gray1;
+          color: $black;
+          text-decoration: none;
+          font-size: 1.1rem;
+          padding: 1rem 1.5rem;
+          background: $white;
+          white-space: nowrap;
+          text-align: center;
+
+          &:hover {
+            background-color: $gray1;
+          }
+
+          @media(hover: hover) and (pointer: fine) {
+            &:hover {
+              background-color: $gray1;
+            }
+          }
+        }
+
+        .watchlist-menu {
+          display: none
+        }
+
+        .recommended-menu,
+        .explore-menu {
+          display: none;
+        }
+
+        @media only screen and (max-width: 750px) {
+
+          .watchlist-menu {
+            display: none
+          }
+
+          .recommended-menu,
+          .explore-menu {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+}

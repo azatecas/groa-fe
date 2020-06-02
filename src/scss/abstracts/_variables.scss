@@ -1,0 +1,39 @@
+// colors
+$turqoise1: hsl(169, 100%, 50%);
+$turqoise2: hsl(169, 100%, 45%);
+$turqoise3: hsl(169, 100%, 35%);
+$turqoise: #00B392;
+$stargold: #ffb400; 
+
+$gray1:  #D8D8D8;
+$gray2: #21242C;
+$gray3: hsl(207, 100%, 4%);
+
+$black: #212120;
+$white: hsl(0, 0%, 100%);
+
+
+$google-blue: #4285f4;
+$button-active-blue: #1669F2;
+
+// color purposes here (will have to ask Martin or dig into Figma more for this)
+//text
+$white-text: $white;
+$black-text: $black;
+
+// accent
+$primary-accent: $turqoise1;
+$secondary-accent: $turqoise2;
+
+// font
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,700,900&display=swap");
+$workSans: "Work Sans", sans-serif;
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+// font sizing
+$baseFontSize: 10px;
+$deskFontSize: $baseFontSize * 1.4; // 14px
+$deskHeaderFS: $baseFontSize * 6.4; // 64px
+$mobileFontSize: $baseFontSize * 1.2; // 12px
+$mobileHeaderFS: $baseFontSize * 3.2; // 32px

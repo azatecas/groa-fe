@@ -1,0 +1,285 @@
+.DataUploadPage {
+  display: flex;
+  justify-content: center;
+  font-family: $workSans;
+}
+
+.textholder1 {
+  h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 4em;
+    margin-top: 4%;
+    margin-bottom: 2%;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  h2,
+  h3 {
+    width: 60%;
+    text-align: center;
+    margin: 3.5% auto;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 1.7em;
+  }
+
+  @media only screen and (max-width: 500px) {
+    text-align: center;
+    padding-top: 25px;
+    h1 {
+      display: flex;
+      justify-content: center;
+      font-size: 180%;
+      margin-top: 4%;
+    }
+
+    h2,
+    h3 {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      padding: 0 35px 0 35px;
+    }
+  }
+  // PHONE IPHONE X (10)
+  @media only screen and (max-width: 375px) {
+    h1 {
+      display: flex;
+      justify-content: center;
+      font-size: 180%;
+      // padding: 0 50px 0 50px;
+    }
+
+    h2,
+    h3 {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      padding: 0 13px 0 13px;
+    }
+  }
+}
+
+.ptext {
+  font-size: $baseFontSize * 1.4;
+  @media only screen and (max-width: 375px) {
+    padding-top: 25px;
+    font-size: 10px;
+  }
+}
+
+.DboxContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 6%;
+
+  .DboxLeft,
+  .DboxRight {
+    width: 290px;
+    height: 250px;
+    padding-top: 15px;
+  }
+
+  .textContainer {
+    p {
+      font-size: $baseFontSize * 2;
+      a#pLink {
+        color: #2477e5;
+        font-weight: 700;
+        text-decoration: none;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .DboxLeft {
+      display: flex;
+      // width:  360px;
+      img {
+        width: 100px;
+        height: auto;
+      }
+    }
+    // IMDB INFO - Not using Currently
+    .DboxRight {
+      margin-top: 72%;
+      display: flex;
+      width: 360px;
+      img {
+        width: 100px;
+        height: auto;
+      }
+    }
+  }
+}
+
+//////////////////HIDE/SHOW INSTRUCTION INFO- LETTERBOX/IMDB/////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+.dropdown {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 290px;
+
+  // CenterBtn SETS IMG AND BUTTON TO CENTER
+  .centerBtn {
+    margin: auto;
+  }
+
+  img {
+    @include responsive-container($mwidth: 164px);
+  }
+
+  .dropBtn {
+    width: 220px;
+    height: 102px;
+    background-color: #00b392;
+    color: #ffffff;
+    padding: 0 35px 0 35px;
+    font-size: 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: inherit;
+  }
+
+  // TEXT CONTAINTER HIDE or SHOW
+  .dropdown-content {
+    display: none;
+    height: 310px;
+  }
+
+  .dropdown-content p {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropBtn:hover,
+  .dropBtn:focus {
+    background-color: #00b392;
+  }
+
+  .dropdown a:hover {
+    background-color: #ddd;
+  }
+
+  .show {
+    display: block;
+  }
+
+  // SIZE 500 or less
+  @media only screen and (max-width: 500px) {
+    .dropBtn {
+      width: 197px;
+      height: 80px;
+      background-color: #00b392;
+      color: #ffffff;
+      padding: 0 39px 0 39px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      outline: inherit;
+    }
+
+    .dropdown-content {
+      height: 280px;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .dropdown-content {
+      height: 320px;
+    }
+  }
+}
+
+//EMPTY DIV - Postions Upload Box to bottom of screen
+.dropdown-content-Empty {
+  display: block;
+  height: 310px;
+  position: relative;
+  @media only screen and (max-width: 500px) {
+    display: block;
+    height: 280px;
+    position: relative;
+  }
+  @media only screen and (max-width: 375px) {
+    display: block;
+    height: 320px;
+    position: relative;
+  }
+}
+.show2 {
+  display: none;
+}
+
+////////////////////UPLOAD DATA BOX///////////////////
+/* 
+  sources that helped me style the input
+  https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+  
+  haven't added the functionality for drap and drop yet https://css-tricks.com/drag-and-drop-file-uploading/
+*/
+.UploadContainer {
+  @include display-flex();
+  position: relative;
+  .inputholder input[type="file"] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    max-width: 100%;
+  }
+
+  label#uploadLabel {
+    width: 420px;
+    text-align: center;
+    margin: auto;
+    padding: 7% 0;
+    cursor: pointer;
+    font-size: $baseFontSize * 1.6;
+    font-weight: 700;
+    display: inline-block;
+    border: 2px dashed #2477e5;
+    @include radius($r: 3px);
+    color: #2477e5;
+    img {
+      margin-top: 4.3%;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .inputholder {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      width: 232px;
+      height: 66px;
+      .uploadData {
+        margin-top: 25px;
+        height: 50px;
+      }
+    }
+  }
+}
+
+// TEXT BOTTOM SCREEN
+.textholder2 {
+  width: 44%;
+  margin: 3.3% auto;
+  text-align: center;
+  font-size: $baseFontSize * 1.4;
+  display: flex;
+  justify-content: center;
+  @media only screen and (max-width: 500px) {
+    width: 80%;
+    margin: 6.6% auto;
+  }
+}

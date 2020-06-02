@@ -1,0 +1,1450 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,700,900&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+#root {
+  /* 
+  sources that helped me style the input
+  https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+  
+  haven't added the functionality for drap and drop yet https://css-tricks.com/drag-and-drop-file-uploading/
+*/
+}
+
+#root html,
+#root body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#root html *,
+#root body * {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+@-webkit-keyframes flexGrow {
+  to {
+    -webkit-box-flex: 1;
+            flex: 1;
+  }
+}
+
+@keyframes flexGrow {
+  to {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+}
+
+@-webkit-keyframes flexShrink {
+  to {
+    -webkit-box-flex: .01;
+            flex: .01;
+    -webkit-box-flex: .00001;
+            flex: .00001;
+  }
+}
+
+@keyframes flexShrink {
+  to {
+    -webkit-box-flex: .01;
+        -ms-flex: .01;
+            flex: .01;
+    -webkit-box-flex: .00001;
+        -ms-flex: .00001;
+            flex: .00001;
+  }
+}
+
+#root html {
+  font-family: "Work Sans", sans-serif;
+  font-weight: normal;
+  color: #212120;
+  font-size: 14px;
+}
+
+#root h1,
+#root h2,
+#root h3,
+#root h4,
+#root h5,
+#root h6 {
+  font-weight: bold;
+  margin: 0;
+}
+
+#root h1 a,
+#root h2 a,
+#root h3 a,
+#root h4 a,
+#root h5 a,
+#root h6 a {
+  font-weight: inherit;
+}
+
+#root em {
+  font-style: italic;
+}
+
+#root strong {
+  font-weight: bold;
+}
+
+#root .uppercase {
+  text-transform: uppercase;
+}
+
+#root .lowercase {
+  text-transform: lowercase;
+}
+
+#root .App {
+  min-height: 100vh;
+  background-color: #212120;
+}
+
+#root .container.register-component,
+#root .container.login-component {
+  font-family: "Work Sans", sans-serif;
+  color: white;
+  background: #212120;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+}
+
+#root .container.register-component .onboarding-nav,
+#root .container.login-component .onboarding-nav {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 95%;
+  margin: 0 auto;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 1.1% 1%;
+}
+
+#root .container.register-component .box-container,
+#root .container.login-component .box-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto;
+  width: 85%;
+}
+
+#root .container.register-component .box-left,
+#root .container.login-component .box-left {
+  width: 45%;
+  margin: 0 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+  max-width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#root .container.register-component .box-left .text-container,
+#root .container.login-component .box-left .text-container {
+  white-space: nowrap;
+}
+
+#root .container.register-component .box-left .text-container h1,
+#root .container.login-component .box-left .text-container h1 {
+  font-size: 5vw;
+}
+
+#root .container.register-component .box-left .text-container h5,
+#root .container.login-component .box-left .text-container h5 {
+  font-size: 1.5vw;
+  font-weight: normal;
+  padding-top: 2rem;
+}
+
+#root .container.register-component .box-left .image-wrapper,
+#root .container.login-component .box-left .image-wrapper {
+  width: 75%;
+  padding: 5% 0;
+}
+
+#root .container.register-component .box-left .image-wrapper .logo,
+#root .container.login-component .box-left .image-wrapper .logo {
+  width: 100%;
+}
+
+#root .container.register-component .box-right,
+#root .container.login-component .box-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  padding: 3%;
+  border-radius: 4px;
+  background: #212120;
+  width: 100%;
+  max-width: 518px;
+  height: 550px;
+}
+
+#root .container.register-component .box-right .form,
+#root .container.login-component .box-right .form {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#root .container.register-component .box-right .form-control,
+#root .container.login-component .box-right .form-control {
+  border-radius: 4px;
+  border: 1px solid #d8d8d8;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  padding: 2.7% 1.7%;
+  margin: 2.6% auto;
+  margin-bottom: 1rem;
+}
+
+#root .container.register-component .box-right input::-webkit-input-placeholder,
+#root .container.login-component .box-right input::-webkit-input-placeholder {
+  font-size: 1.1rem;
+  color: #d8d8d8;
+}
+
+#root .container.register-component .box-right input:-ms-input-placeholder,
+#root .container.login-component .box-right input:-ms-input-placeholder {
+  font-size: 1.1rem;
+  color: #d8d8d8;
+}
+
+#root .container.register-component .box-right input::-ms-input-placeholder,
+#root .container.login-component .box-right input::-ms-input-placeholder {
+  font-size: 1.1rem;
+  color: #d8d8d8;
+}
+
+#root .container.register-component .box-right input::placeholder,
+#root .container.login-component .box-right input::placeholder {
+  font-size: 1.1rem;
+  color: #d8d8d8;
+}
+
+#root .container.register-component .box-right .bottom-form,
+#root .container.login-component .box-right .bottom-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  margin: 0;
+}
+
+#root .container.register-component .box-right .bottom-form .check-box-container,
+#root .container.login-component .box-right .bottom-form .check-box-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-top: 13px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#root .container.register-component .box-right .bottom-form .check-box-container p,
+#root .container.login-component .box-right .bottom-form .check-box-container p {
+  color: black;
+  white-space: nowrap;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container,
+#root .container.login-component .box-right .bottom-form .btn-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 15px;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .signup-btn,
+#root .container.register-component .box-right .bottom-form .btn-container button.login-btn,
+#root .container.login-component .box-right .bottom-form .btn-container .signup-btn,
+#root .container.login-component .box-right .bottom-form .btn-container button.login-btn {
+  border: none;
+  width: 100%;
+  max-width: 100%;
+  height: 50px;
+  border-radius: 4px;
+  background: #00B392;
+  color: #212120;
+  font-size: 14px;
+  margin-bottom: 2%;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fancy,
+#root .container.login-component .box-right .bottom-form .btn-container .fancy {
+  line-height: 0.5;
+  text-align: center;
+  margin: 1% 0;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fancy span,
+#root .container.login-component .box-right .bottom-form .btn-container .fancy span {
+  display: inline-block;
+  position: relative;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fancy span:before,
+#root .container.register-component .box-right .bottom-form .btn-container .fancy span:after,
+#root .container.login-component .box-right .bottom-form .btn-container .fancy span:before,
+#root .container.login-component .box-right .bottom-form .btn-container .fancy span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid white;
+  top: 0;
+  width: 104px;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fancy span:before,
+#root .container.login-component .box-right .bottom-form .btn-container .fancy span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fancy span:after,
+#root .container.login-component .box-right .bottom-form .btn-container .fancy span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .google-btn,
+#root .container.login-component .box-right .bottom-form .btn-container .google-btn {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  margin-top: 2%;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .google-btn .google-icon-wrapper,
+#root .container.login-component .box-right .bottom-form .btn-container .google-btn .google-icon-wrapper {
+  position: absolute;
+  margin-top: 4px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .google-btn .google-icon,
+#root .container.login-component .box-right .bottom-form .btn-container .google-btn .google-icon {
+  margin-top: 11px;
+  margin-left: 11px;
+  width: 18px;
+  height: 18px;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .google-btn .btn-text,
+#root .container.login-component .box-right .bottom-form .btn-container .google-btn .btn-text {
+  margin: 7% 2% 0 30%;
+  color: #212120;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .google-btn:hover,
+#root .container.login-component .box-right .bottom-form .btn-container .google-btn:hover {
+  -webkit-box-shadow: 0 0 6px #4285f4;
+          box-shadow: 0 0 6px #4285f4;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .google-btn:active,
+#root .container.login-component .box-right .bottom-form .btn-container .google-btn:active {
+  background: white;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fb-btn,
+#root .container.login-component .box-right .bottom-form .btn-container .fb-btn {
+  width: 100%;
+  height: 50px;
+  background-color: #3A5A97;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  margin-top: 2%;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fb-btn .fb-icon-wrapper,
+#root .container.login-component .box-right .bottom-form .btn-container .fb-btn .fb-icon-wrapper {
+  position: absolute;
+  margin-top: 4px;
+  margin-left: 1px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fb-btn .fb-icon,
+#root .container.login-component .box-right .bottom-form .btn-container .fb-btn .fb-icon {
+  margin-top: 11px;
+  margin-left: 11px;
+  width: 18px;
+  height: 18px;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fb-btn .btn-text,
+#root .container.login-component .box-right .bottom-form .btn-container .fb-btn .btn-text {
+  margin: 7% 2% 0 30%;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fb-btn:hover,
+#root .container.login-component .box-right .bottom-form .btn-container .fb-btn:hover {
+  -webkit-box-shadow: 0 0 6px #4285f4;
+          box-shadow: 0 0 6px #4285f4;
+}
+
+#root .container.register-component .box-right .bottom-form .btn-container .fb-btn:active,
+#root .container.login-component .box-right .bottom-form .btn-container .fb-btn:active {
+  background: white;
+}
+
+#root .container.register-component .box-right .bottomAccount,
+#root .container.login-component .box-right .bottomAccount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 5%;
+}
+
+#root .container.register-component .box-right .bottomAccount .loginAccount,
+#root .container.login-component .box-right .bottomAccount .loginAccount {
+  text-align: center;
+  color: #2477e5;
+  font-size: 18px;
+}
+
+#root .container.register-component .box-right .bottomAccount .link,
+#root .container.login-component .box-right .bottomAccount .link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: auto;
+  font-size: 1rem;
+  text-decoration: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+#root .container.register-component .box-right .bottomAccount .link:hover,
+#root .container.login-component .box-right .bottomAccount .link:hover {
+  color: #00b392;
+  font-weight: bold;
+}
+
+#root .container.register-component .box-right .callingError,
+#root .container.login-component .box-right .callingError {
+  color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 1068px) {
+  #root .container.register-component .box-container,
+  #root .container.login-component .box-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #root .container.register-component .box-container .box-left,
+  #root .container.login-component .box-container .box-left {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+  }
+  #root .container.register-component .box-container .box-left .text-container,
+  #root .container.login-component .box-container .box-left .text-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+  #root .container.register-component .box-container .box-left .text-container h1,
+  #root .container.login-component .box-container .box-left .text-container h1 {
+    font-size: 10vw;
+  }
+  #root .container.register-component .box-container .box-left .text-container h5,
+  #root .container.login-component .box-container .box-left .text-container h5 {
+    font-size: 3vw;
+  }
+  #root .container.register-component .box-container .box-left .image-wrapper,
+  #root .container.login-component .box-container .box-left .image-wrapper {
+    width: 100%;
+  }
+  #root .container.register-component .box-container .box-right,
+  #root .container.login-component .box-container .box-right {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #root .container.register-component .box-container .box-right .form,
+  #root .container.login-component .box-container .box-right .form {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+    color: white;
+  }
+  #root .container.register-component .box-container .box-right .btn-container .google-btn .btn-text,
+  #root .container.login-component .box-container .box-right .btn-container .google-btn .btn-text {
+    margin: 4% 2% 0 38%;
+  }
+  #root .container.register-component .box-container .box-right .btn-container .fb-btn .btn-text,
+  #root .container.login-component .box-container .box-right .btn-container .fb-btn .btn-text {
+    margin: 4% 2% 0 38%;
+  }
+}
+
+@media (max-width: 1068px) and (max-width: 600px) {
+  #root .container.register-component .box-container,
+  #root .container.login-component .box-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #root .container.register-component .box-container .box-left,
+  #root .container.login-component .box-container .box-left {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+  }
+  #root .container.register-component .box-container .box-left .text-container,
+  #root .container.login-component .box-container .box-left .text-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+  #root .container.register-component .box-container .box-left .text-container h1,
+  #root .container.login-component .box-container .box-left .text-container h1 {
+    display: none;
+  }
+  #root .container.register-component .box-container .box-left .text-container h5,
+  #root .container.login-component .box-container .box-left .text-container h5 {
+    display: none;
+  }
+  #root .container.register-component .box-container .box-left .image-wrapper,
+  #root .container.login-component .box-container .box-left .image-wrapper {
+    display: none;
+  }
+  #root .container.register-component .box-container .box-left .image-wrapper .logo,
+  #root .container.login-component .box-container .box-left .image-wrapper .logo {
+    display: none;
+  }
+  #root .container.register-component .box-container .box-right,
+  #root .container.login-component .box-container .box-right {
+    margin: 2%;
+    padding: 0%;
+    background: #212120;
+    height: 100%;
+  }
+  #root .container.register-component .box-container .box-right .form,
+  #root .container.login-component .box-container .box-right .form {
+    max-width: 100%;
+  }
+  #root .container.register-component .box-container .box-right .bottom-form .btn-container .signup-btn,
+  #root .container.register-component .box-container .box-right .bottom-form .btn-container button.login-btn,
+  #root .container.login-component .box-container .box-right .bottom-form .btn-container .signup-btn,
+  #root .container.login-component .box-container .box-right .bottom-form .btn-container button.login-btn {
+    margin-top: 3%;
+  }
+  #root .container.register-component .box-container .box-right .bottom-form .btn-container .fancy span:before,
+  #root .container.register-component .box-container .box-right .bottom-form .btn-container .fancy span:after,
+  #root .container.login-component .box-container .box-right .bottom-form .btn-container .fancy span:before,
+  #root .container.login-component .box-container .box-right .bottom-form .btn-container .fancy span:after {
+    content: "";
+    width: 800%;
+  }
+  #root .container.register-component .box-container .box-right .bottom-form .btn-container .google-btn .btn-text,
+  #root .container.login-component .box-container .box-right .bottom-form .btn-container .google-btn .btn-text {
+    margin: 4% 2% 0 35%;
+  }
+  #root .container.register-component .box-container .box-right .bottom-form .btn-container .fb-btn .btn-text,
+  #root .container.login-component .box-container .box-right .bottom-form .btn-container .fb-btn .btn-text {
+    margin: 4% 2% 0 35%;
+  }
+  #root .container.register-component .box-container .box-right .bottom-form .bottomAccount,
+  #root .container.login-component .box-container .box-right .bottom-form .bottomAccount {
+    padding: 2%;
+  }
+  #root .container.register-component .box-container .box-right .bottom-form .bottomAccount .loginAccount,
+  #root .container.login-component .box-container .box-right .bottom-form .bottomAccount .loginAccount {
+    font-size: 9px;
+  }
+}
+
+#root .register.nav,
+#root .login.nav {
+  font-family: "Work Sans", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  #root .register.nav,
+  #root .login.nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+#root .register.nav img,
+#root .login.nav img {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 2.5rem;
+  width: auto;
+}
+
+#root .register.nav .signin-title,
+#root .login.nav .signin-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  #root .signin-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin-top: 2%;
+    font-size: 20px;
+  }
+}
+
+#root .mainContainer {
+  background: #212120;
+  padding: 1.1% 1%;
+  font-family: "Work Sans", sans-serif;
+}
+
+#root .mainContainer .navContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 1rem;
+}
+
+@media only screen and (max-width: 750px) {
+  #root .mainContainer .navContainer {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+#root .mainContainer .navContainer .Bars {
+  padding-top: 5px;
+}
+
+#root .mainContainer .navContainer .Bars .bars-icon {
+  color: white;
+  font-size: 1.4rem;
+}
+
+#root .mainContainer .navContainer .Links {
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 .4rem;
+}
+
+#root .mainContainer .navContainer .Links a.active {
+  border-bottom: 3px solid #00E6BC;
+}
+
+#root .mainContainer .navContainer .Links img {
+  height: 2rem;
+  width: auto;
+}
+
+#root .mainContainer .navContainer .Links .Groa-NavLink:hover {
+  color: white;
+}
+
+#root .mainContainer .navContainer .Links .NavLink {
+  color: white;
+  text-decoration: none;
+  margin: 0 1%;
+  -webkit-transition: all 500ms linear;
+  transition: all 500ms linear;
+}
+
+#root .mainContainer .navContainer .Links .NavLink:hover {
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  #root .mainContainer .navContainer .watchlist,
+  #root .mainContainer .navContainer .recommended,
+  #root .mainContainer .navContainer .explore,
+  #root .mainContainer .navContainer .dropdown-hover .angle-down-icon {
+    -webkit-box-flex: .000000001;
+        -ms-flex: .000000001;
+            flex: .000000001;
+    white-space: pre;
+    padding: 0;
+    font-size: 0;
+    margin: 0;
+    opacity: 0;
+  }
+}
+
+#root .mainContainer .navContainer .searchContainer {
+  background-color: #21242C;
+  padding: .4rem;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  overflow: hidden;
+  -webkit-transition: all 500ms linear;
+  transition: all 500ms linear;
+  min-width: 20vw;
+}
+
+#root .mainContainer .navContainer .searchContainer .search-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 75%;
+}
+
+#root .mainContainer .navContainer .searchContainer .search-icon,
+#root .mainContainer .navContainer .searchContainer .backspace-icon {
+  color: white;
+  opacity: .4;
+  font-size: 1.2rem;
+  padding: .2rem;
+}
+
+#root .mainContainer .navContainer .searchContainer .backspace-icon {
+  cursor: pointer;
+}
+
+#root .mainContainer .navContainer .searchContainer .searchBox {
+  font-size: 1rem;
+  background-color: #21242C;
+  border: none;
+  color: white;
+}
+
+#root .mainContainer .navContainer .searchContainer input:focus {
+  outline: none;
+}
+
+#root .mainContainer .navContainer .searchContainer input:-webkit-autofill,
+#root .mainContainer .navContainer .searchContainer input:-webkit-autofill:hover,
+#root .mainContainer .navContainer .searchContainer input:-webkit-autofill:focus,
+#root .mainContainer .navContainer .searchContainer input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+}
+
+#root .mainContainer .navContainer button {
+  white-space: nowrap;
+  font-size: 1rem;
+  padding: .4rem;
+  margin: 0 .6rem;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  -webkit-transition: all 500ms linear;
+  transition: all 500ms linear;
+}
+
+@media only screen and (max-width: 750px) {
+  #root .mainContainer .navContainer .Links {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0%;
+    margin-right: 0%;
+  }
+  #root .mainContainer .navContainer button {
+    font-size: 0;
+    padding: .2rem;
+    background-color: rgba(28, 28, 28, 0);
+    border: none;
+  }
+  #root .mainContainer .navContainer .sync-icon {
+    font-size: initial;
+    color: white;
+  }
+  #root .mainContainer .navContainer .searchContainer {
+    min-width: 35vw;
+  }
+}
+
+#root .mainContainer .navContainer .fa-icons {
+  width: 14%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 1.6rem;
+  color: white;
+}
+
+#root .mainContainer button.hidden,
+#root .mainContainer .searchContainer.hidden,
+#root .mainContainer .hidden {
+  min-width: 0;
+  -webkit-box-flex: .000000001;
+      -ms-flex: .000000001;
+          flex: .000000001;
+  white-space: pre;
+  padding: 0;
+  font-size: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+#root .mainContainer .dropdown-hover {
+  padding: .25rem .5rem;
+  position: relative;
+  white-space: nowrap;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#root .mainContainer .dropdown-hover .angle-down-icon {
+  padding-left: .5rem;
+}
+
+#root .mainContainer .dropdown-hover .dropdown-content {
+  display: none;
+}
+
+#root .mainContainer .dropdown-hover:hover .dropdown-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  top: 2rem;
+  right: .4rem;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 5;
+  border: 1px solid #D8D8D8;
+}
+
+#root .mainContainer .dropdown-hover:hover .dropdown-content .NavLink {
+  border-top: 1px solid #D8D8D8;
+  color: #212120;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  white-space: nowrap;
+  text-align: center;
+}
+
+#root .mainContainer .dropdown-hover:hover .dropdown-content .NavLink:hover {
+  background-color: #D8D8D8;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #root .mainContainer .dropdown-hover:hover .dropdown-content .NavLink:hover {
+    background-color: #D8D8D8;
+  }
+}
+
+#root .mainContainer .dropdown-hover:hover .dropdown-content .watchlist-menu {
+  display: none;
+}
+
+#root .mainContainer .dropdown-hover:hover .dropdown-content .recommended-menu,
+#root .mainContainer .dropdown-hover:hover .dropdown-content .explore-menu {
+  display: none;
+}
+
+@media only screen and (max-width: 750px) {
+  #root .mainContainer .dropdown-hover:hover .dropdown-content .watchlist-menu {
+    display: none;
+  }
+  #root .mainContainer .dropdown-hover:hover .dropdown-content .recommended-menu,
+  #root .mainContainer .dropdown-hover:hover .dropdown-content .explore-menu {
+    display: block;
+  }
+}
+
+#root .container.post-login {
+  background: white;
+  color: black;
+}
+
+#root .container.post-login header {
+  margin: 0% auto;
+  text-align: center;
+}
+
+#root .container.post-login header h1 {
+  font-size: 4rem;
+  margin-top: 2.75%;
+}
+
+#root .container.post-login header p {
+  font-size: 1.75rem;
+  margin: 2.24% auto;
+  line-height: 2.15rem;
+  width: 100%;
+  max-width: 425px;
+  height: 68;
+  text-align: center;
+}
+
+#root .container.post-login .choice-selection-container {
+  text-align: center;
+}
+
+#root .container.post-login .choice-selection-container h2 {
+  font-size: 2.5rem;
+  margin: 2% 0% 4.25% 0%;
+}
+
+#root .container.post-login .choice-selection-container .choice-selection {
+  margin: auto;
+  width: 71%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#root .container.post-login .choice-selection-container .choice-selection .choice-box {
+  width: 35%;
+  max-width: 287px;
+  height: 550px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#root .container.post-login .choice-selection-container .choice-selection .choice-box h4 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 27px;
+}
+
+#root .container.post-login .choice-selection-container .choice-selection .choice-box .img-box {
+  width: 100%;
+  max-width: 285;
+  height: auto;
+}
+
+#root .container.post-login .choice-selection-container .choice-selection .choice-box .select-btn {
+  width: 100%;
+  max-width: 287px;
+  height: 51px;
+  margin-top: 32px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  border: none;
+  font-size: 1.75rem;
+  color: white;
+  background: #21242c;
+}
+
+#root .container.post-login .choice-selection-container .choice-selection .choice-box .select-btn:hover {
+  color: #21242c;
+  background: white;
+  border: 1px solid grey;
+}
+
+#root .container.post-login .hidden,
+#root .container.post-login .setup-wizard.choice-box.hidden {
+  display: none;
+}
+
+#root .DataUploadPage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: "Work Sans", sans-serif;
+}
+
+#root .textholder1 h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 4em;
+  margin-top: 4%;
+  margin-bottom: 2%;
+  font-weight: 700;
+  text-align: center;
+}
+
+#root .textholder1 h2,
+#root .textholder1 h3 {
+  width: 60%;
+  text-align: center;
+  margin: 3.5% auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 400;
+  font-size: 1.7em;
+}
+
+@media only screen and (max-width: 500px) {
+  #root .textholder1 {
+    text-align: center;
+    padding-top: 25px;
+  }
+  #root .textholder1 h1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 180%;
+    margin-top: 4%;
+  }
+  #root .textholder1 h2,
+  #root .textholder1 h3 {
+    margin-top: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 0 35px 0 35px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #root .textholder1 h1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 180%;
+  }
+  #root .textholder1 h2,
+  #root .textholder1 h3 {
+    margin-top: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 0 13px 0 13px;
+  }
+}
+
+#root .ptext {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 375px) {
+  #root .ptext {
+    padding-top: 25px;
+    font-size: 10px;
+  }
+}
+
+#root .DboxContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 6%;
+}
+
+#root .DboxContainer .DboxLeft,
+#root .DboxContainer .DboxRight {
+  width: 290px;
+  height: 250px;
+  padding-top: 15px;
+}
+
+#root .DboxContainer .textContainer p {
+  font-size: 20px;
+}
+
+#root .DboxContainer .textContainer p a#pLink {
+  color: #2477e5;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 500px) {
+  #root .DboxContainer .DboxLeft {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #root .DboxContainer .DboxLeft img {
+    width: 100px;
+    height: auto;
+  }
+  #root .DboxContainer .DboxRight {
+    margin-top: 72%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 360px;
+  }
+  #root .DboxContainer .DboxRight img {
+    width: 100px;
+    height: auto;
+  }
+}
+
+#root .dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 290px;
+}
+
+#root .dropdown .centerBtn {
+  margin: auto;
+}
+
+#root .dropdown img {
+  width: 100%;
+  max-width: 164px;
+  height: auto;
+}
+
+#root .dropdown .dropBtn {
+  width: 220px;
+  height: 102px;
+  background-color: #00b392;
+  color: #ffffff;
+  padding: 0 35px 0 35px;
+  font-size: 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: inherit;
+}
+
+#root .dropdown .dropdown-content {
+  display: none;
+  height: 310px;
+}
+
+#root .dropdown .dropdown-content p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+#root .dropdown .dropBtn:hover,
+#root .dropdown .dropBtn:focus {
+  background-color: #00b392;
+}
+
+#root .dropdown .dropdown a:hover {
+  background-color: #ddd;
+}
+
+#root .dropdown .show {
+  display: block;
+}
+
+@media only screen and (max-width: 500px) {
+  #root .dropdown .dropBtn {
+    width: 197px;
+    height: 80px;
+    background-color: #00b392;
+    color: #ffffff;
+    padding: 0 39px 0 39px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: inherit;
+  }
+  #root .dropdown .dropdown-content {
+    height: 280px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #root .dropdown .dropdown-content {
+    height: 320px;
+  }
+}
+
+#root .dropdown-content-Empty {
+  display: block;
+  height: 310px;
+  position: relative;
+}
+
+@media only screen and (max-width: 500px) {
+  #root .dropdown-content-Empty {
+    display: block;
+    height: 280px;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #root .dropdown-content-Empty {
+    display: block;
+    height: 320px;
+    position: relative;
+  }
+}
+
+#root .show2 {
+  display: none;
+}
+
+#root .UploadContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  position: relative;
+}
+
+#root .UploadContainer .inputholder input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  max-width: 100%;
+}
+
+#root .UploadContainer label#uploadLabel {
+  width: 420px;
+  text-align: center;
+  margin: auto;
+  padding: 7% 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+  border: 2px dashed #2477e5;
+  border-radius: 3px;
+  color: #2477e5;
+}
+
+#root .UploadContainer label#uploadLabel img {
+  margin-top: 4.3%;
+}
+
+@media only screen and (max-width: 500px) {
+  #root .UploadContainer .inputholder {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 10px;
+    width: 232px;
+    height: 66px;
+  }
+  #root .UploadContainer .inputholder .uploadData {
+    margin-top: 25px;
+    height: 50px;
+  }
+}
+
+#root .textholder2 {
+  width: 44%;
+  margin: 3.3% auto;
+  text-align: center;
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media only screen and (max-width: 500px) {
+  #root .textholder2 {
+    width: 80%;
+    margin: 6.6% auto;
+  }
+}
+
+#root .RatingsContainer {
+  padding: 2rem;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,17 @@
+// use as a function and update the varibales $j and $a to what you need them.
+@mixin display-flex($j: center, $a: center) {
+  display: flex;
+  justify-content: $j;
+  align-content: $a;
+}
+
+@mixin radius($r: 4px) {
+  border-radius: $r;
+}
+
+// great to use on images or general containers you'd like to be responsive
+@mixin responsive-container($mwidth: 500px, $height: auto, $width: 100%) {
+  width: $width;
+  max-width: $mwidth;
+  height: $height;
+}

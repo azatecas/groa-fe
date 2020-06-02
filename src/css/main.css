@@ -1,0 +1,500 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,700,900&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+#root {
+  /* 
+  sources that helped me style the input
+  https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+  
+  haven't added the functionality for drap and drop yet https://css-tricks.com/drag-and-drop-file-uploading/
+*/ }
+  #root html,
+  #root body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; }
+    #root html *,
+    #root body * {
+      box-sizing: inherit; }
+
+@-webkit-keyframes flexGrow {
+  to {
+    flex: 1; } }
+
+@-o-keyframes flexGrow {
+  to {
+    flex: 1; } }
+
+@keyframes flexGrow {
+  to {
+    flex: 1; } }
+
+@-webkit-keyframes flexShrink {
+  to {
+    flex: .01;
+    flex: .00001; } }
+
+@-o-keyframes flexShrink {
+  to {
+    flex: .01;
+    flex: .00001; } }
+
+@keyframes flexShrink {
+  to {
+    flex: .01;
+    flex: .00001; } }
+  #root html {
+    font-family: "Work Sans", sans-serif;
+    font-weight: normal;
+    color: #212120;
+    font-size: 14px; }
+  #root h1,
+  #root h2,
+  #root h3,
+  #root h4,
+  #root h5,
+  #root h6 {
+    font-weight: bold;
+    margin: 0; }
+    #root h1 a,
+    #root h2 a,
+    #root h3 a,
+    #root h4 a,
+    #root h5 a,
+    #root h6 a {
+      font-weight: inherit; }
+  #root em {
+    font-style: italic; }
+  #root strong {
+    font-weight: bold; }
+  #root .uppercase {
+    text-transform: uppercase; }
+  #root .lowercase {
+    text-transform: lowercase; }
+  #root .App {
+    min-height: 100vh;
+    background-color: #212120; }
+  #root .mainContainer {
+    background: #212120;
+    padding: 1.1% 1%;
+    font-family: "Work Sans", sans-serif; }
+    #root .mainContainer .navContainer {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding-right: 1rem; }
+      @media only screen and (max-width: 750px) {
+        #root .mainContainer .navContainer {
+          justify-content: space-around; } }
+      #root .mainContainer .navContainer .Bars {
+        padding-top: 5px; }
+        #root .mainContainer .navContainer .Bars .bars-icon {
+          color: white;
+          font-size: 1.4rem; }
+      #root .mainContainer .navContainer .Links {
+        width: 60%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0 .4rem; }
+        #root .mainContainer .navContainer .Links a.active {
+          border-bottom: 3px solid #00E6BC; }
+        #root .mainContainer .navContainer .Links img {
+          height: 2rem;
+          width: auto; }
+        #root .mainContainer .navContainer .Links .Groa-NavLink:hover {
+          color: white; }
+        #root .mainContainer .navContainer .Links .NavLink {
+          color: white;
+          text-decoration: none;
+          margin: 0 1%;
+          transition: all 500ms linear; }
+          #root .mainContainer .navContainer .Links .NavLink:hover {
+            color: white; }
+      @media only screen and (max-width: 600px) {
+        #root .mainContainer .navContainer .watchlist,
+        #root .mainContainer .navContainer .recommended,
+        #root .mainContainer .navContainer .explore,
+        #root .mainContainer .navContainer .dropdown-hover .angle-down-icon {
+          flex: .000000001;
+          white-space: pre;
+          padding: 0;
+          font-size: 0;
+          margin: 0;
+          opacity: 0; } }
+      #root .mainContainer .navContainer .searchContainer {
+        background-color: #21242C;
+        padding: .4rem;
+        border-radius: 5px;
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        overflow: hidden;
+        transition: all 500ms linear;
+        min-width: 20vw; }
+        #root .mainContainer .navContainer .searchContainer .search-wrapper {
+          display: flex;
+          align-items: center;
+          width: 75%; }
+        #root .mainContainer .navContainer .searchContainer .search-icon,
+        #root .mainContainer .navContainer .searchContainer .backspace-icon {
+          color: white;
+          opacity: .4;
+          font-size: 1.2rem;
+          padding: .2rem; }
+        #root .mainContainer .navContainer .searchContainer .backspace-icon {
+          cursor: pointer; }
+        #root .mainContainer .navContainer .searchContainer .searchBox {
+          font-size: 1rem;
+          background-color: #21242C;
+          border: none;
+          color: white; }
+        #root .mainContainer .navContainer .searchContainer input:focus {
+          outline: none; }
+        #root .mainContainer .navContainer .searchContainer input:-webkit-autofill,
+        #root .mainContainer .navContainer .searchContainer input:-webkit-autofill:hover,
+        #root .mainContainer .navContainer .searchContainer input:-webkit-autofill:focus,
+        #root .mainContainer .navContainer .searchContainer input:-webkit-autofill {
+          -webkit-text-fill-color: white !important; }
+      #root .mainContainer .navContainer button {
+        white-space: nowrap;
+        font-size: 1rem;
+        padding: .4rem;
+        margin: 0 .6rem;
+        border-radius: 5px;
+        background-color: white;
+        cursor: pointer;
+        transition: all 500ms linear; }
+      @media only screen and (max-width: 750px) {
+        #root .mainContainer .navContainer .Links {
+          justify-content: space-between;
+          padding: 0%;
+          margin-right: 0%; }
+        #root .mainContainer .navContainer button {
+          font-size: 0;
+          padding: .2rem;
+          background-color: rgba(28, 28, 28, 0);
+          border: none; }
+        #root .mainContainer .navContainer .sync-icon {
+          font-size: initial;
+          color: white; }
+        #root .mainContainer .navContainer .searchContainer {
+          min-width: 35vw; } }
+      #root .mainContainer .navContainer .fa-icons {
+        width: 14%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.6rem;
+        color: white; }
+    #root .mainContainer button.hidden,
+    #root .mainContainer .searchContainer.hidden,
+    #root .mainContainer .hidden {
+      min-width: 0;
+      flex: .000000001;
+      white-space: pre;
+      padding: 0;
+      font-size: 0;
+      margin: 0;
+      opacity: 0; }
+    #root .mainContainer .dropdown-hover {
+      padding: .25rem .5rem;
+      position: relative;
+      white-space: nowrap;
+      cursor: pointer;
+      display: flex;
+      align-items: center; }
+      #root .mainContainer .dropdown-hover .angle-down-icon {
+        padding-left: .5rem; }
+      #root .mainContainer .dropdown-hover .dropdown-content {
+        display: none; }
+      #root .mainContainer .dropdown-hover:hover .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 2rem;
+        right: .4rem;
+        border-radius: 5px;
+        overflow: hidden;
+        z-index: 5;
+        border: 1px solid #D8D8D8; }
+        #root .mainContainer .dropdown-hover:hover .dropdown-content .NavLink {
+          border-top: 1px solid #D8D8D8;
+          color: #212120;
+          text-decoration: none;
+          font-size: 1.1rem;
+          padding: 1rem 1.5rem;
+          background: white;
+          white-space: nowrap;
+          text-align: center; }
+          #root .mainContainer .dropdown-hover:hover .dropdown-content .NavLink:hover {
+            background-color: #D8D8D8; }
+          @media (hover: hover) and (pointer: fine) {
+            #root .mainContainer .dropdown-hover:hover .dropdown-content .NavLink:hover {
+              background-color: #D8D8D8; } }
+        #root .mainContainer .dropdown-hover:hover .dropdown-content .watchlist-menu {
+          display: none; }
+        #root .mainContainer .dropdown-hover:hover .dropdown-content .recommended-menu,
+        #root .mainContainer .dropdown-hover:hover .dropdown-content .explore-menu {
+          display: none; }
+        @media only screen and (max-width: 750px) {
+          #root .mainContainer .dropdown-hover:hover .dropdown-content .watchlist-menu {
+            display: none; }
+          #root .mainContainer .dropdown-hover:hover .dropdown-content .recommended-menu,
+          #root .mainContainer .dropdown-hover:hover .dropdown-content .explore-menu {
+            display: block; } }
+  #root .container.post-login {
+    background: white;
+    color: black; }
+    #root .container.post-login header {
+      margin: 0% auto;
+      text-align: center; }
+      #root .container.post-login header h1 {
+        font-size: 4rem;
+        margin-top: 2.75%; }
+      #root .container.post-login header p {
+        font-size: 1.75rem;
+        margin: 2.24% auto;
+        line-height: 2.15rem;
+        width: 100%;
+        max-width: 425px;
+        height: 68;
+        text-align: center; }
+    #root .container.post-login .choice-selection-container {
+      text-align: center; }
+      #root .container.post-login .choice-selection-container h2 {
+        font-size: 2.5rem;
+        margin: 2% 0% 4.25% 0%; }
+      #root .container.post-login .choice-selection-container .choice-selection {
+        margin: auto;
+        width: 71%;
+        display: flex;
+        justify-content: space-around; }
+        #root .container.post-login .choice-selection-container .choice-selection .choice-box {
+          width: 35%;
+          max-width: 287px;
+          height: 550px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between; }
+          #root .container.post-login .choice-selection-container .choice-selection .choice-box h4 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 27px; }
+          #root .container.post-login .choice-selection-container .choice-selection .choice-box .img-box {
+            width: 100%;
+            max-width: 285;
+            height: auto; }
+          #root .container.post-login .choice-selection-container .choice-selection .choice-box .select-btn {
+            width: 100%;
+            max-width: 287px;
+            height: 51px;
+            margin-top: 32px;
+            justify-content: flex-end;
+            border: none;
+            font-size: 1.75rem;
+            color: white;
+            background: #21242c; }
+            #root .container.post-login .choice-selection-container .choice-selection .choice-box .select-btn:hover {
+              color: #21242c;
+              background: white;
+              border: 1px solid grey; }
+    #root .container.post-login .hidden,
+    #root .container.post-login .setup-wizard.choice-box.hidden {
+      display: none; }
+  #root .DataUploadPage {
+    display: flex;
+    justify-content: center;
+    font-family: "Work Sans", sans-serif; }
+  #root .textholder1 h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 4em;
+    margin-top: 4%;
+    margin-bottom: 2%;
+    font-weight: 700;
+    text-align: center; }
+  #root .textholder1 h2,
+  #root .textholder1 h3 {
+    width: 60%;
+    text-align: center;
+    margin: 3.5% auto;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 1.7em; }
+  @media only screen and (max-width: 500px) {
+    #root .textholder1 {
+      text-align: center;
+      padding-top: 25px; }
+      #root .textholder1 h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 180%;
+        margin-top: 4%; }
+      #root .textholder1 h2,
+      #root .textholder1 h3 {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        padding: 0 35px 0 35px; } }
+  @media only screen and (max-width: 375px) {
+    #root .textholder1 h1 {
+      display: flex;
+      justify-content: center;
+      font-size: 180%; }
+    #root .textholder1 h2,
+    #root .textholder1 h3 {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      padding: 0 13px 0 13px; } }
+  #root .ptext {
+    font-size: 14px; }
+    @media only screen and (max-width: 375px) {
+      #root .ptext {
+        padding-top: 25px;
+        font-size: 10px; } }
+  #root .DboxContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 6%; }
+    #root .DboxContainer .DboxLeft,
+    #root .DboxContainer .DboxRight {
+      width: 290px;
+      height: 250px;
+      padding-top: 15px; }
+    #root .DboxContainer .textContainer p {
+      font-size: 20px; }
+      #root .DboxContainer .textContainer p a#pLink {
+        color: #2477e5;
+        font-weight: 700;
+        text-decoration: none; }
+    @media only screen and (max-width: 500px) {
+      #root .DboxContainer .DboxLeft {
+        display: flex; }
+        #root .DboxContainer .DboxLeft img {
+          width: 100px;
+          height: auto; }
+      #root .DboxContainer .DboxRight {
+        margin-top: 72%;
+        display: flex;
+        width: 360px; }
+        #root .DboxContainer .DboxRight img {
+          width: 100px;
+          height: auto; } }
+  #root .dropdown {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 290px; }
+    #root .dropdown .centerBtn {
+      margin: auto; }
+    #root .dropdown img {
+      width: 100%;
+      max-width: 164px;
+      height: auto; }
+    #root .dropdown .dropBtn {
+      width: 220px;
+      height: 102px;
+      background-color: #00b392;
+      color: #ffffff;
+      padding: 0 35px 0 35px;
+      font-size: 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      outline: inherit; }
+    #root .dropdown .dropdown-content {
+      display: none;
+      height: 310px; }
+    #root .dropdown .dropdown-content p {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block; }
+    #root .dropdown .dropBtn:hover,
+    #root .dropdown .dropBtn:focus {
+      background-color: #00b392; }
+    #root .dropdown .dropdown a:hover {
+      background-color: #ddd; }
+    #root .dropdown .show {
+      display: block; }
+    @media only screen and (max-width: 500px) {
+      #root .dropdown .dropBtn {
+        width: 197px;
+        height: 80px;
+        background-color: #00b392;
+        color: #ffffff;
+        padding: 0 39px 0 39px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        outline: inherit; }
+      #root .dropdown .dropdown-content {
+        height: 280px; } }
+    @media only screen and (max-width: 375px) {
+      #root .dropdown .dropdown-content {
+        height: 320px; } }
+  #root .dropdown-content-Empty {
+    display: block;
+    height: 310px;
+    position: relative; }
+    @media only screen and (max-width: 500px) {
+      #root .dropdown-content-Empty {
+        display: block;
+        height: 280px;
+        position: relative; } }
+    @media only screen and (max-width: 375px) {
+      #root .dropdown-content-Empty {
+        display: block;
+        height: 320px;
+        position: relative; } }
+  #root .show2 {
+    display: none; }
+  #root .UploadContainer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: relative; }
+    #root .UploadContainer .inputholder input[type="file"] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      max-width: 100%; }
+    #root .UploadContainer label#uploadLabel {
+      width: 420px;
+      text-align: center;
+      margin: auto;
+      padding: 7% 0;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-block;
+      border: 2px dashed #2477e5;
+      border-radius: 3px;
+      color: #2477e5; }
+      #root .UploadContainer label#uploadLabel img {
+        margin-top: 4.3%; }
+    @media only screen and (max-width: 500px) {
+      #root .UploadContainer .inputholder {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        width: 232px;
+        height: 66px; }
+        #root .UploadContainer .inputholder .uploadData {
+          margin-top: 25px;
+          height: 50px; } }
+  #root .textholder2 {
+    width: 44%;
+    margin: 3.3% auto;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    justify-content: center; }
+    @media only screen and (max-width: 500px) {
+      #root .textholder2 {
+        width: 80%;
+        margin: 6.6% auto; } }

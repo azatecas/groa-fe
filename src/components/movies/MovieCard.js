@@ -161,29 +161,29 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
   yearGenreModal: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding:"2% 0"
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "2% 0",
   },
   year: {
-    fontSize: "18px",  
+    fontSize: "18px",
   },
   genresModal: {
     fontStyle: "italic",
-    display:'flex',
-    alignItems:'center',
+    display: "flex",
+    alignItems: "center",
   },
   rateGenreModal: {
-    display: 'flex',
+    display: "flex",
   },
   imdbImg: {
-    height: '40%',
+    height: "40%",
   },
   avgRatingModal: {
     fontSize: "1rem",
     paddingLeft: "3%",
-    display:'flex',
-    alignItems:'center',
+    display: "flex",
+    alignItems: "center",
   },
   actionButtons: {
     display: "flex",
@@ -448,10 +448,16 @@ function MovieCard({
                   </div>
                   <p className={classes.descriptionModal}>{description}</p>
                   {page === "Recommendations" ? (
-                  <div className={classes.rateGenreModal}>
-                    <img classaName={classes.imdbImg} src="https://img.icons8.com/color/48/000000/imdb.png" />
-                    <p className={classes.avgRatingModal}> {avg_rating * 2 }/10</p>
-                  </div>
+                    <div className={classes.rateGenreModal}>
+                      <img
+                        classaName={classes.imdbImg}
+                        src="https://img.icons8.com/color/48/000000/imdb.png"
+                      />
+                      <p className={classes.avgRatingModal}>
+                        {" "}
+                        {avg_rating * 2}/10
+                      </p>
+                    </div>
                   ) : (
                     ""
                   )}
@@ -483,13 +489,13 @@ function MovieCard({
                       <Button
                         onClick={handleClickRemove}
                         className={classes.watchList}
-                        disabled={removed || notInWatchlist ? true : false}
+                        disabled={removed || notInWatchlist ? false : false}
                         size="small"
                         color="primary"
                       >
                         {!removed && !notInWatchlist
                           ? "Not Interested"
-                          : "Removed from Results"}
+                          : "Not Interested"}
                       </Button>
                     </CardActions>
                   ) : (

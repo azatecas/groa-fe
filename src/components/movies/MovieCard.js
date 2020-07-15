@@ -452,6 +452,7 @@ function MovieCard({
                       <img
                         classaName={classes.imdbImg}
                         src="https://img.icons8.com/color/48/000000/imdb.png"
+                        alt={name}
                       />
                       <p className={classes.avgRatingModal}>
                         {" "}
@@ -542,7 +543,6 @@ function MovieCard({
                       className={classes.starsModal}
                       size="large"
                       precision={0.5}
-                      emptyIcon={<StarBorderIcon fontSize="inherit" />}
                       emptyIcon={
                         <StarBorderIcon
                           fontSize="inherit"
@@ -561,7 +561,6 @@ function MovieCard({
                       className={classes.starsModal}
                       size="large"
                       precision={0.5}
-                      emptyIcon={<StarBorderIcon fontSize="inherit" />}
                       emptyIcon={
                         <StarBorderIcon
                           fontSize="inherit"

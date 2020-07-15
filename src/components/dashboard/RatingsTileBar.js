@@ -171,10 +171,7 @@ export const RatingsTileBar = ({ movies }) => {
 
 const CustomRightArrow = ({ onClick, ...rest }) => {
   const styles = useStyles();
-  const {
-    onMove,
-    carouselState: { currentSlide, deviceType },
-  } = rest;
+
   // onMove means if dragging or swiping in progress.
   return (
     <button className={styles.customArrow} onClick={() => onClick()}>
@@ -186,10 +183,6 @@ const CustomRightArrow = ({ onClick, ...rest }) => {
 
 const CustomLeftArrow = ({ onClick, ...rest }) => {
   const styles = useStyles();
-  const {
-    onMove,
-    carouselState: { currentSlide, deviceType },
-  } = rest;
   // onMove means if dragging or swiping in progress.
   return (
     <button className={styles.leftArrow} onClick={() => onClick()}>

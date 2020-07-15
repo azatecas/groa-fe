@@ -22,7 +22,7 @@ const AuthCheck = (props) => {
 
   return (
     <div>
-      <h1>LOADEDING</h1>
+      <h1>LOADING</h1>
     </div>
   );
 };

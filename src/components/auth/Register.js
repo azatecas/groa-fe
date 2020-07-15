@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { registerAction, loginAction } from "../../store/actions";
-import { ifDev } from "../../utils/removeAttribute.js";
 import { Link, useHistory } from "react-router-dom";
 
 // styling imports
 import Picture3 from "../../img/couch-popcorn.png";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 // Navbar Register
@@ -17,177 +16,177 @@ import { useOktaAuth } from "@okta/okta-react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    fontFamily: 'Work Sans',
-    color: 'white',
-    margin: '0 auto',
-    width: '100%',
-    minHeight: '100vh',
-    backgroundColor: '#212120'
+    fontFamily: "Work Sans",
+    color: "white",
+    margin: "0 auto",
+    width: "100%",
+    minHeight: "100vh",
+    backgroundColor: "#212120",
   },
   onboardingNav: {
-    color: 'white',
-    display: 'flex',
-    width: '95%',
-    margin: '0 auto',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    padding: '1.1% 1%',
-    textAlign: 'center',
+    color: "white",
+    display: "flex",
+    width: "95%",
+    margin: "0 auto",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    padding: "1.1% 1%",
+    textAlign: "center",
   },
   boxContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '0 auto',
-    width: '85%',
+    display: "flex",
+    justifyContent: "space-between",
+    margin: "0 auto",
+    width: "85%",
   },
   boxLeft: {
-    width: '45%',
-    margin: '0 1%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textAlign: 'left',
-    maxWidth: '100%',
-    boxSizing: 'border-box',
+    width: "45%",
+    margin: "0 1%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "left",
+    maxWidth: "100%",
+    boxSizing: "border-box",
   },
   textContainer: {
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
   },
   h1: {
-    fontSize: '5vw',
+    fontSize: "5vw",
   },
   h5: {
-    fontSize: '1.5vw',
-    fontWeight: 'normal',
-    paddingTop: '2rem',
+    fontSize: "1.5vw",
+    fontWeight: "normal",
+    paddingTop: "2rem",
   },
   imageWrapper: {
-    width: '75%',
-    padding: '5%, 0'
+    width: "75%",
+    padding: "5%, 0",
   },
   logo: {
-    width: '100%',
+    width: "100%",
   },
   //box right
   boxRight: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: '4px',
-    background: '#212120',
-    width: '100%',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "4px",
+    background: "#212120",
+    width: "100%",
     // height: '550px',
   },
   form: {
-    width: '50%',
-    display: 'flex',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    alignItems: 'center',
+    width: "50%",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
   },
   bottomForm: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column-reverse',
+    width: "100%",
+    display: "flex",
+    flexDirection: "column-reverse",
     margin: 0,
   },
   btnContainer: {
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    paddingBottom: '15px',
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    paddingBottom: "15px",
   },
   signupBtn: {
-    width: '100%',
-    maxWidth: '100%',
-    height: '50px',
-    background: '#00B392',
-    color: '#212120',
-    marginBottom: '2%',
-    '&:hover': {
-      boxShadow: '0 0 6px #00B392',
-      color: '#00B392',
+    width: "100%",
+    maxWidth: "100%",
+    height: "50px",
+    background: "#00B392",
+    color: "#212120",
+    marginBottom: "2%",
+    "&:hover": {
+      boxShadow: "0 0 6px #00B392",
+      color: "#00B392",
     },
   },
   fbBtn: {
-    width: '100%',
-    height: '50px',
-    backgroundColor: '#3A5A97',
-    borderRadius: '4px',
-    boxShadow: '0 3px 4px 0 rgba(0, 0, 0, .25)',
-    marginTop: '2%',
-    '&:hover': {
-      boxShadow: '0 0 6px #4285f4',
+    width: "100%",
+    height: "50px",
+    backgroundColor: "#3A5A97",
+    borderRadius: "4px",
+    boxShadow: "0 3px 4px 0 rgba(0, 0, 0, .25)",
+    marginTop: "2%",
+    "&:hover": {
+      boxShadow: "0 0 6px #4285f4",
     },
-    '&:active': {
-      backgroundColor: 'white',
-    }
+    "&:active": {
+      backgroundColor: "white",
+    },
   },
   fbIconWrapper: {
-    position: 'absolute',
-    marginTop: '4px',
-    marginLeft: '1px',
-    width: '40px',
-    height: '40px',
-    borderRadius: '2px',
+    position: "absolute",
+    marginTop: "4px",
+    marginLeft: "1px",
+    width: "40px",
+    height: "40px",
+    borderRadius: "2px",
   },
   fbIcon: {
-    marginTop: '11px',
-    marginLeft: '11px',
-    width: '18px',
-    height: '18px',
+    marginTop: "11px",
+    marginLeft: "11px",
+    width: "18px",
+    height: "18px",
   },
   btnText: {
-    margin: '6% 1% 0 30%',
-    color: 'white',
-    fontzsize: '14px',
-    letterSpacing: '0.2px',
+    margin: "6% 1% 0 30%",
+    color: "white",
+    fontzsize: "14px",
+    letterSpacing: "0.2px",
     fontFamily: "Roboto",
   },
 
   [theme.breakpoints.down("xs")]: {
     onboardingNav: {
-      flexDirection: 'column',
+      flexDirection: "column",
     },
     boxContainer: {
-      flexDirection: 'column',
+      flexDirection: "column",
       alignItems: "center",
-      width:'100%'
+      width: "100%",
     },
     boxLeft: {
-      width: '80%',
+      width: "80%",
       margin: 0,
       padding: 0,
     },
     textContainer: {
-      margin: '0 auto',
-      width: '100%',
+      margin: "0 auto",
+      width: "100%",
     },
     h1: {
-      display: 'none',
+      display: "none",
     },
     h5: {
-      display: 'none',
+      display: "none",
     },
     imageWrapper: {
-      display: 'none',
+      display: "none",
     },
     logo: {
-      display: 'none',
+      display: "none",
     },
     boxRight: {
-      margin: '10% 0',
+      margin: "10% 0",
       background: "#212120",
-      height: '100%',
+      height: "100%",
     },
     form: {
-      maxWidth: '100%',
-      width:'80%'
+      maxWidth: "100%",
+      width: "80%",
     },
     btnText: {
-      margin: '4% 2% 0 35%',
+      margin: "4% 2% 0 35%",
     },
   },
 }));
@@ -237,28 +236,21 @@ const Register = (props) => {
           console.log("Error fetching User info in UseEffect", err)
         );
     }
-  }, [authState, authService]);
+  }, [authState, authService, history, props]);
 
   return (
     <div
       className={styles.root}
-    // data-test={ifDev("register-component")}
+      // data-test={ifDev("register-component")}
     >
       {/* NAVIGATION */}
-      <div
-        className={styles.onboardingNav}
-      >
+      <div className={styles.onboardingNav}>
         <RegisterNavLinks />
       </div>
       {/* MAIN PAGE CONTENT */}
-      <div
-        className={styles.boxContainer}>
-        <div
-          className={styles.boxLeft}
-        >
-          <div
-            className={styles.textContainer}
-          >
+      <div className={styles.boxContainer}>
+        <div className={styles.boxLeft}>
+          <div className={styles.textContainer}>
             <h1 className={styles.h1}>
               Your movies, <br /> your way.
             </h1>

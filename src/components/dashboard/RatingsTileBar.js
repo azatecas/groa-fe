@@ -97,6 +97,9 @@ const useStyles = makeStyles((theme) => ({
       transform: "scale(1.1)",
     },
   },
+  carousel: {
+    overflow: "visible",
+  },
 }));
 
 const responsive = {
@@ -134,6 +137,7 @@ export const RatingsTileBar = ({ movies }) => {
       itemClass="carousel-item-padding-1-px"
       customLeftArrow={<CustomLeftArrow />}
       customRightArrow={<CustomRightArrow />}
+      className={styles.carousel}
     >
       {movies.map((movie, index) => {
         let posterURI = movie.poster_url;

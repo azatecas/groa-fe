@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../../utils/axiosWithAuth.js";
 import { connect } from "react-redux";
 import {
@@ -283,6 +283,17 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "9vw",
     },
   },
+  // Shortcut Provider Links
+  shortLinks: {
+    border: "red solid 1px",
+    background: "#212120",
+    margin: "0 0 0 -7px",
+
+    zIndex: "1",
+  },
+  shortProviders: {
+    display: "flex",
+  },
 }));
 
 // more fields will be appearing according to the Figma file
@@ -339,9 +350,13 @@ function MovieCard({
   );
   //material-ui
   const classes = useStyles();
-  const [openModal, setOpenModal] = React.useState(false);
+  const [openModal, setOpenModal] = useState(false);
   //for button group
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    handleClickProviders();
+  }, []);
 
   const handleOpen = () => {
     setOpenModal(true);
@@ -397,7 +412,6 @@ function MovieCard({
       .get(`${userid}/service-providers/${movie.movie_id}`)
       .then((res) => {
         setServiceProvider(res.data);
-        console.log("data", res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -414,10 +428,37 @@ function MovieCard({
     console.log("number of ratings is " + numRatings.num);
     console.log("openalert");
   };
+
+  useEffect(() => {
+    handleClickProviders();
+  }, []);
+
   return (
     <div className={classes.card}>
-      <div className={classes.modalBtn} onClick={handleOpen}>
-        <img className={classes.movieImg} src={image} alt={movie.name} />
+      <div className={classes.shortProviders}>
+        <img
+          className={classes.movieImg}
+          src={image}
+          alt={movie.name}
+          onClick={handleOpen}
+        />
+        <div className={classes.shortLinks}>
+          {/* <button></button>
+          <button></button>
+          <button></button>
+          <button></button> */}
+          {serviceProvider.map((serviceProviders) => {
+            return (
+              <Link
+                key={serviceProviders.provider_id}
+                href={serviceProviders.link}
+                target="_blank"
+              >
+                <button>{serviceProvider.name}</button>
+              </Link>
+            );
+          })}
+        </div>
       </div>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -581,7 +622,6 @@ function MovieCard({
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                         className={classes.expansionPanalSummary}
-                        onClick={handleClickProviders}
                       >
                         <Typography className={classes.heading}>
                           Where to Watch
@@ -590,7 +630,7 @@ function MovieCard({
                       <div className={classes.serviceInfo}>
                         {serviceProvider.map((serviceProviders) => {
                           return (
-                            <div>
+                            <div key={serviceProviders.link}>
                               <Link
                                 href={serviceProviders.link}
                                 className={classes.Link}

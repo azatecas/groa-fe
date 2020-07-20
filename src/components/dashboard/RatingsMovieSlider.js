@@ -7,6 +7,8 @@ import "react-multi-carousel/lib/styles.css";
 const useStyles = makeStyles((theme) => ({
   container: {
     fontFamily: `"Work Sans", sans-serif`,
+    padding: "1rem",
+    margin: "1.5rem",
   },
   btnCont: {
     display: "flex",

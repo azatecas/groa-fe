@@ -33,6 +33,13 @@ import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+//Shortcut Links Pictures
+import Netflix from "../../img/netflix.png";
+import Amazon from "../../img/amazon.png";
+import Hulu from "../../img/hulu_trans.png";
+import DPlus from "../../img/dplus.png";
+import Prime from "../../img/prime.png";
+
 const styles = (theme) => ({
   closeBtn: {
     display: "flex",
@@ -285,14 +292,47 @@ const useStyles = makeStyles((theme) => ({
   },
   // Shortcut Provider Links
   shortLinks: {
-    border: "red solid 1px",
-    background: "#212120",
-    margin: "0 0 0 -7px",
-
-    zIndex: "1",
+    // border: "red solid 1px",
+    background: "rgba(52, 52, 50)",
+    marginLeft: "-35px",
+    "&:hover": {
+      zIndex: 1,
+    },
   },
   shortProviders: {
     display: "flex",
+  },
+  [theme.breakpoints.up("xs")]: {
+    shortLinks: {
+      background: "rgba(52, 52, 50, 0.9)",
+      marginLeft: "-30px",
+      "&:hover": {
+        zIndex: 1,
+      },
+    },
+    shortLinksImg: {
+      width: "30px",
+      margin: "8px 3px 0 3px",
+    },
+  },
+  [theme.breakpoints.up("md")]: {
+    shortLinks: {
+      // border: "red solid 1px",
+
+      marginLeft: "-35px",
+    },
+    shortLinksImg: {
+      width: "35px",
+      margin: "8px 8px 0 8px",
+    },
+  },
+  [theme.breakpoints.up("xl")]: {
+    shortLinks: {
+      marginLeft: "-60px",
+    },
+    shortLinksImg: {
+      width: "45px",
+    },
   },
 }));
 
@@ -327,6 +367,9 @@ function MovieCard({
   const [serviceProvider, setServiceProvider] = useState([]);
   const [yourRating, setYourRating] = useState(false);
 
+  // placeholder image
+  const missingImg =
+    "https://images.unsplash.com/photo-1515198392621-a3f3588028c4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=650&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=500";
   /* Used for the star rating */
   const [rating, setRating] = useState(0);
   /* Used for dynamically rendering the "Add to watchlist" button and if it's disabled */
@@ -428,7 +471,7 @@ function MovieCard({
     console.log("number of ratings is " + numRatings.num);
     console.log("openalert");
   };
-
+  console.log("this is image: ", image);
   useEffect(() => {
     handleClickProviders();
   }, []);
@@ -438,27 +481,106 @@ function MovieCard({
       <div className={classes.shortProviders}>
         <img
           className={classes.movieImg}
-          src={image}
+          src={image ? image : missingImg}
           alt={movie.name}
           onClick={handleOpen}
         />
-        <div className={classes.shortLinks}>
-          {/* <button></button>
-          <button></button>
-          <button></button>
-          <button></button> */}
-          {serviceProvider.map((serviceProviders) => {
-            return (
-              <Link
-                key={serviceProviders.provider_id}
-                href={serviceProviders.link}
-                target="_blank"
-              >
-                <button>{serviceProvider.name}</button>
-              </Link>
-            );
-          })}
-        </div>
+        {page === "Ratings" ? (
+          ""
+        ) : (
+          <div className={classes.shortLinks}>
+            {serviceProvider.map((serviceProviders) => {
+              if (
+                serviceProviders.provider_id === 10 &&
+                serviceProviders.presentation_type === "sd" &&
+                serviceProviders.monetization_type === "buy"
+              ) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={Amazon}
+                      alt="Amazon"
+                    />
+                  </Link>
+                );
+              }
+              if (serviceProviders.provider_id === 8) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={Netflix}
+                      alt="netflix"
+                    />
+                  </Link>
+                );
+              }
+              if (
+                serviceProviders.provider_id === 10 &&
+                serviceProviders.monetization_type === "rent"
+              ) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={Prime}
+                      alt="Amazon Prime"
+                    />
+                  </Link>
+                );
+              }
+              if (
+                serviceProviders.provider_id === 15 &&
+                serviceProviders.presentation_type === "sd"
+              ) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={Hulu}
+                      alt="Hulu"
+                    />
+                  </Link>
+                );
+              }
+              if (
+                serviceProviders.provider_id === 337 &&
+                serviceProviders.presentation_type === "sd"
+              ) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={DPlus}
+                      alt="Disney Plus"
+                    />
+                  </Link>
+                );
+              }
+            })}
+          </div>
+        )}
       </div>
       <Modal
         aria-labelledby="transition-modal-title"

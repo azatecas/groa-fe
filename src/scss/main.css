@@ -13,6 +13,7 @@
 #root body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -40,21 +41,21 @@
 
 @-webkit-keyframes flexShrink {
   to {
-    -webkit-box-flex: .01;
-            flex: .01;
-    -webkit-box-flex: .00001;
-            flex: .00001;
+    -webkit-box-flex: 0.01;
+            flex: 0.01;
+    -webkit-box-flex: 0.00001;
+            flex: 0.00001;
   }
 }
 
 @keyframes flexShrink {
   to {
-    -webkit-box-flex: .01;
-        -ms-flex: .01;
-            flex: .01;
-    -webkit-box-flex: .00001;
-        -ms-flex: .00001;
-            flex: .00001;
+    -webkit-box-flex: 0.01;
+        -ms-flex: 0.01;
+            flex: 0.01;
+    -webkit-box-flex: 0.00001;
+        -ms-flex: 0.00001;
+            flex: 0.00001;
   }
 }
 

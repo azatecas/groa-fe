@@ -295,6 +295,9 @@ const useStyles = makeStyles((theme) => ({
     // border: "red solid 1px",
     background: "rgba(52, 52, 50)",
     marginLeft: "-35px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
     "&:hover": {
       zIndex: 1,
     },
@@ -312,18 +315,18 @@ const useStyles = makeStyles((theme) => ({
     },
     shortLinksImg: {
       width: "30px",
-      margin: "8px 3px 0 3px",
+      "&:hover": {
+        width: "50px",
+      },
     },
   },
   [theme.breakpoints.up("md")]: {
     shortLinks: {
-      // border: "red solid 1px",
-
       marginLeft: "-35px",
     },
     shortLinksImg: {
       width: "35px",
-      margin: "8px 8px 0 8px",
+      margin: "0 6px",
     },
   },
   [theme.breakpoints.up("xl")]: {
@@ -519,7 +522,7 @@ function MovieCard({
                     <img
                       className={classes.shortLinksImg}
                       src={Netflix}
-                      alt="netflix"
+                      alt="Netflix"
                     />
                   </Link>
                 );

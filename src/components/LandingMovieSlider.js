@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import { TileBar } from "./TileBar";
 import ReactLoading from "react-loading";
 import "react-multi-carousel/lib/styles.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 //styling for Landing Movie Slider Component
 const useStyles = makeStyles((theme) => ({
   container: {

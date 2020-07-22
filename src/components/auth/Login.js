@@ -27,18 +27,7 @@ function Copyright() {
       </Link>
     </Typography>
   );
-}
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: theme.spacing(1),
-  },
-  textField: {
-    display: "flex",
-    marginBottom: "2%",
-    width: "100%",
-    padding: "0",
-  },
-}));
+
 
 const LoginPage = (props) => {
 
@@ -85,7 +74,6 @@ const LoginPage = (props) => {
           </div>
         </div>
         <div>
-          <p>IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII</p>
           {!authState.isAuthenticated ? <p onClick={login}>Please Login</p> : <p> You are Logged in <span onClick={logout}>Logout </span></p>}
         </div>
       </div>

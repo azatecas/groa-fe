@@ -11,9 +11,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useOktaAuth } from "@okta/okta-react/dist/OktaContext";
 
 const useStyles = makeStyles((theme) => ({
-  RatingsContainer: {
-    padding: "2rem",
-  },
   Title: {
     fontSize: "3rem",
     textAlign: "center",

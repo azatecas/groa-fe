@@ -78,9 +78,9 @@ const useStyles = makeStyles((theme) => ({
   },
   movieImg: {
     width: "100%",
-    height: "375px",
-    borderRadius: "11px",
-    objectFit: "contain",
+    height: "450px",
+    borderRadius: "5px",
+    // objectFit: "contain",
   },
   name: {
     fontSize: "15px",
@@ -108,6 +108,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
+    height: "450px",
     padding: "1%",
   },
   cardActions: {
@@ -322,7 +323,7 @@ const useStyles = makeStyles((theme) => ({
   },
   [theme.breakpoints.up("md")]: {
     shortLinks: {
-      marginLeft: "-35px",
+      marginLeft: "-45px",
     },
     shortLinksImg: {
       width: "35px",
@@ -331,7 +332,7 @@ const useStyles = makeStyles((theme) => ({
   },
   [theme.breakpoints.up("xl")]: {
     shortLinks: {
-      marginLeft: "-60px",
+      marginLeft: "-55px",
     },
     shortLinksImg: {
       width: "45px",

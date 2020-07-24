@@ -93,12 +93,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   movieCard: {
+    padding: ".3rem",
     "&:hover": {
       transform: "scale(1.1)",
     },
   },
   carousel: {
-    overflow: "visible",
+    overflow: "hidden",
   },
 }));
 

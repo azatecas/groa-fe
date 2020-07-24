@@ -27,10 +27,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardGrid: {
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    paddingRight: theme.spacing(1),
-    paddingLeft: theme.spacing(1),
+    maxWidth: "1425px",
+    padding: "2.5rem",
   },
   movieCard: {
     "&:hover": {

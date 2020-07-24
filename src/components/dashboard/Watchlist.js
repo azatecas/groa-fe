@@ -34,6 +34,12 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "2rem",
     },
   },
+  [theme.breakpoints.down("xl")]: {
+    cardGrid: {
+      maxWidth: "2000px",
+      margin: "0 auto",
+    },
+  },
 }));
 function Watchlist({
   userid,

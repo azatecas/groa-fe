@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     maxWidth: "1425px",
     padding: "2.5rem",
+    margin: "0 auto",
   },
   movieCard: {
     "&:hover": {
@@ -37,6 +38,12 @@ const useStyles = makeStyles((theme) => ({
   [theme.breakpoints.down("xs")]: {
     Title: {
       fontSize: "2rem",
+    },
+  },
+  [theme.breakpoints.down("xl")]: {
+    cardGrid: {
+      maxWidth: "2000px",
+      margin: "0 auto",
     },
   },
 }));

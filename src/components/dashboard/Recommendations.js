@@ -36,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
       transitionDuration: ".5s",
     },
   },
+  [theme.breakpoints.down("xl")]: {
+    cardGrid: {
+      maxWidth: "2000px",
+      margin: "0 auto",
+    },
+  },
 }));
 
 function Recommendations({

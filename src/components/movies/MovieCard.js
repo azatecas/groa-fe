@@ -81,7 +81,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "450px",
     borderRadius: "5px",
-    // objectFit: "contain",
   },
   name: {
     fontSize: "15px",
@@ -111,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "450px",
     padding: "1%",
+    margin: ".5rem 0",
   },
   cardActions: {
     fontSize: "10px",

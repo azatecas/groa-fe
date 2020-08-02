@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../../utils/axiosWithAuth.js";
+import axios from "axios";
 import { connect } from "react-redux";
 import {
   ratingAction,
@@ -400,10 +401,8 @@ function MovieCard({
   const [openModal, setOpenModal] = useState(false);
   //for button group
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    handleClickProviders();
-  }, []);
+  // used for poster images if they are missing.
+  const [posterImg, setPosterImg] = useState(image);
 
   const handleOpen = () => {
     setOpenModal(true);
@@ -475,9 +474,15 @@ function MovieCard({
     console.log("number of ratings is " + numRatings.num);
     console.log("openalert");
   };
-  console.log("this is image: ", image);
+  const moviePosterCheck = (imgURL) => {
+    axios.get(imgURL).catch(() => {
+      setPosterImg("https://source.unsplash.com/collection/1736993/500x650");
+    });
+  };
+
   useEffect(() => {
     handleClickProviders();
+    moviePosterCheck(posterImg);
   }, []);
 
   return (
@@ -485,7 +490,7 @@ function MovieCard({
       <div className={classes.shortProviders}>
         <img
           className={classes.movieImg}
-          src={image ? image : missingImg}
+          src={posterImg}
           alt={movie.name}
           onClick={handleOpen}
         />
@@ -604,7 +609,11 @@ function MovieCard({
               <></>
             </DialogTitle>
             <div className={classes.movieInfoModal}>
-              <img className={classes.movieImgModal} src={image} alt={name} />
+              <img
+                className={classes.movieImgModal}
+                src={posterImg}
+                alt={name}
+              />
 
               <div className={classes.movieContentDiv}>
                 <CardContent className={classes.cardContentModal}>

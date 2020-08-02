@@ -92,6 +92,7 @@ function Explore({
             className={classes.cardGrid}
             cols={screenWidth ? 2 : 5}
             cellHeight="auto"
+            id="grid"
           >
             {" "}
             {queries
@@ -151,6 +152,7 @@ function Explore({
             className={classes.cardGrid}
             cols={screenWidth ? 2 : 5}
             cellHeight="auto"
+            id="grid"
           >
             {" "}
             {movies

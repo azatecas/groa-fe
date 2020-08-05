@@ -448,7 +448,6 @@ function MovieCard({
     setRemoved(true);
   };
   const handleClickDeleteFromWatchlist = () => {
-    console.log("thisi sin move", movie_id);
     removeWatchListAction(userid, movie_id, accessToken);
     setDeleted(true);
     handleClose();
@@ -471,8 +470,6 @@ function MovieCard({
   };
   const onboardingRating = () => {
     setNumRatings({ ...numRatings, num: numRatings.num + 1 });
-    console.log("number of ratings is " + numRatings.num);
-    console.log("openalert");
   };
   const moviePosterCheck = (imgURL) => {
     axios.get(imgURL).catch(() => {

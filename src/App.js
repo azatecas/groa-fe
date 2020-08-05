@@ -16,7 +16,7 @@ import SearchBar from "./components/auth/SearchBar";
 import OnboardingPlatform from "./components/auth/OnboardingPlatform";
 import PostOnboarding from "./components/auth/PostOnboarding";
 import PrivacyPolicy from "./components/layout/privacy-policy.js";
-import LandingPage from './components/LandingPage';
+import LandingPage from "./components/LandingPage";
 
 // for testing
 import { ifDev } from "./utils/removeAttribute.js";
@@ -29,7 +29,6 @@ import reactGAinitialization from "./config/analytics.js";
 import { Provider } from "react-redux";
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
 import { reducer } from "./store/reducers";
 import { BrowserRouter as Router } from "react-router-dom";
 import { loadState, saveState } from "./store/localStorage.js";
@@ -42,7 +41,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducer,
   loadState(),
-  composeEnhancers(applyMiddleware(thunk, logger))
+  composeEnhancers(applyMiddleware(thunk))
 );
 
 store.subscribe(() => {
@@ -55,7 +54,6 @@ store.subscribe(() => {
 });
 
 function App() {
-
   useEffect(() => reactGAinitialization(), []);
   const theme = React.useMemo(
     () =>
@@ -82,7 +80,11 @@ function App() {
           <Security {...oktaConfig.oidc}>
             <div className="App" data-test={ifDev("App-component")}>
               <Route path="/implicit/callback" component={LoginCallback} />
-              <Route exact path={["/", "/landingpage"]} component={LandingPage} />
+              <Route
+                exact
+                path={["/", "/landingpage"]}
+                component={LandingPage}
+              />
               <Route
                 exact
                 path={[

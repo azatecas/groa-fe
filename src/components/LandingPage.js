@@ -50,10 +50,6 @@ const useStyles = makeStyles((theme) => ({
     "& img": {
       width: "100%",
     },
-    ["@media (max-width:500px)"]: {
-      display: "flex",
-      flexDirection: "column",
-    },
   },
   title: {
     textAlign: "center",
@@ -73,17 +69,9 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: "20px",
       border: "none",
       cursor: "pointer",
-      ["@media (max-width:500px)"]: {
-        width: "100%",
-        margin: "5vh auto",
-      },
     },
     "& p": {
       fontSize: "20px",
-    },
-    ["@media (max-width:500px)"]: {
-      width: "100%",
-      textAlign: "center",
     },
   },
   recBtn: {

@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "3rem",
     textAlign: "center",
     paddingTop: "2%",
+    color: "white",
   },
   cardGrid: {
     maxWidth: "1425px",
@@ -80,7 +81,7 @@ function Explore({
   ]);
 
   // How many movies render
-  const cardAmount = 40;
+  const cardAmount = 60;
 
   if (isFetching) return <LoadingScreen />;
   else

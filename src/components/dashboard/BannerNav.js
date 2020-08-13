@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "./Nav.js";
 import { connect } from "react-redux";
 import { useOktaAuth } from "@okta/okta-react/dist/OktaContext";
 import {
@@ -40,12 +41,27 @@ const useStyles = makeStyles((theme) => ({
   Banner: {
     width: "100%",
   },
+  navbar: {
+    display: "flex",
+    flexDirection: "row",
+    padding: "2rem",
+    justifyContent: "space-around",
+    background: "#121211",
+    marginTop: "-5px",
+    "& a": {
+      fontSize: "1rem",
+      textDecoration: "None",
+      color: "white",
+    },
+    "& a:hover": {
+      color: "#07E6BC",
+    },
+  },
 }));
 
 const BannerNav = ({ userid, search }) => {
   const theme = useTheme();
   const classes = useStyles();
-
   const { authState, authService } = useOktaAuth();
 
   const logout = async () => authService.logout("/");
@@ -66,11 +82,11 @@ const BannerNav = ({ userid, search }) => {
           Logout
         </MenuItem>
       </Toolbar>
+      <img className={classes.Banner} src={Banner} alt="Groa Banner" />
       <div>
-        <img className={classes.Banner} src={Banner} alt="Groa Banner" />
+        <Nav userid={userid} />
+        {search ? <SearchBar /> : <></>}
       </div>
-
-      {search ? <SearchBar /> : <></>}
     </div>
   );
 };

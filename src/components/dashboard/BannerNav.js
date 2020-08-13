@@ -1,5 +1,5 @@
-import React from "react";
-import Nav from "./Nav.js";
+import React, { useEffect } from "react";
+
 import { connect } from "react-redux";
 import { useOktaAuth } from "@okta/okta-react/dist/OktaContext";
 import {
@@ -13,7 +13,7 @@ import Banner from "../../img/Banner.png";
 import GroaLogo from "../../img/groa-logo-nav.png";
 
 import { Toolbar, Typography, MenuItem, CssBaseline } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 // Search Bar Component
 import SearchBar from "../auth/SearchBar.js";
@@ -40,14 +40,15 @@ const useStyles = makeStyles((theme) => ({
   },
   Banner: {
     width: "100%",
+    height: "65vh",
   },
   navbar: {
     display: "flex",
     flexDirection: "row",
-    padding: "2rem",
+    padding: "1rem 0",
     justifyContent: "space-around",
     background: "#121211",
-    marginTop: "-5px",
+    width: "100%",
     "& a": {
       fontSize: "1rem",
       textDecoration: "None",
@@ -57,14 +58,38 @@ const useStyles = makeStyles((theme) => ({
       color: "#07E6BC",
     },
   },
+  navs: {
+    padding: "1rem 0",
+    background: "#121211",
+  },
 }));
 
 const BannerNav = ({ userid, search }) => {
-  const theme = useTheme();
   const classes = useStyles();
   const { authState, authService } = useOktaAuth();
 
   const logout = async () => authService.logout("/");
+
+  const handleScroll = (target, nav, banner) => {
+    if (window.pageYOffset >= target) {
+      nav.classList.add("sticky");
+      banner.classList.add("stickyNavBanner");
+    } else {
+      nav.classList.remove("sticky");
+      banner.classList.remove("stickyNavBanner");
+    }
+  };
+
+  useEffect(() => {
+    let navSticky = document.querySelector("#stickyNav");
+    let bannerSticky = document.querySelector("#banner");
+    let sticky = navSticky.offsetTop;
+
+    console.log(sticky);
+    window.onscroll = function () {
+      handleScroll(sticky, navSticky, bannerSticky);
+    };
+  }, []);
 
   return (
     <div>
@@ -82,9 +107,19 @@ const BannerNav = ({ userid, search }) => {
           Logout
         </MenuItem>
       </Toolbar>
-      <img className={classes.Banner} src={Banner} alt="Groa Banner" />
-      <div>
-        <Nav userid={userid} />
+      <img
+        id="banner"
+        className={classes.Banner}
+        src={Banner}
+        alt="Groa Banner"
+      />
+      <div id="stickyNav" className={classes.navs}>
+        <nav className={classes.navbar}>
+          <a href={`/${userid}/recommendations`}>Recommendation</a>
+          <a href={`/${userid}/watchlist`}>Watchlist</a>
+          <a href={`/${userid}/ratings`}>Ratings</a>
+          <a href={`/${userid}/explore`}>Explore</a>
+        </nav>
         {search ? <SearchBar /> : <></>}
       </div>
     </div>

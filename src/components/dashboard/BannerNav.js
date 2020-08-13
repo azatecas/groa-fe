@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     padding: "1rem 0",
     justifyContent: "space-around",
-    background: "#121211",
+
     width: "100%",
     "& a": {
       fontSize: "1rem",
@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
   navs: {
     padding: "1rem 0",
+    marginTop: "-5px",
     background: "#121211",
   },
 }));

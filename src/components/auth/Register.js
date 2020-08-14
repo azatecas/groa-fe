@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 auto",
     width: "100%",
     minHeight: "100vh",
-    backgroundColor: "#020C14",
+    background: "linear-gradient(180deg, #000A12 0%, #545454 94.14%)",
   },
   onboardingNav: {
     color: "white",
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: "4px",
-    background: "#020C14",
+
     width: "100%",
     // height: '550px',
   },
@@ -101,6 +101,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: "100%",
     height: "50px",
+    boxShadow: "0 3px 4px 0 rgba(0, 0, 0, .25)",
     background: "#00B392",
     color: "#212120",
     marginBottom: "2%",

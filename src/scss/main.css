@@ -102,9 +102,9 @@
 }
 
 #root .footer {
-  background-color: #101010;
+  background-color: #545454;
   margin-top: 1rem;
-  padding: 2rem 0;
+  padding: 0.5rem 0;
   width: 100%;
   text-align: center;
 }

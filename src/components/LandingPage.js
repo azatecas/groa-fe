@@ -86,6 +86,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  background: {
+    background: "linear-gradient(180deg, #000A12 0%, #545454 94.14%)",
+  },
 }));
 
 const LandingPage = ({
@@ -146,7 +149,7 @@ const LandingPage = ({
   }, []);
 
   return (
-    <div>
+    <div className={styles.background}>
       <div className={styles.testDiv}>
         <div className={styles.onboardingNav}>
           <LandingNavLinks />

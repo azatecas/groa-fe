@@ -17,12 +17,13 @@ const useStyles = makeStyles((theme) => ({
   [theme.breakpoints.down("xs")]: {
     searchContainer: {
       width: "90%",
+      margin: "1rem",
     },
   },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: "white",
+    backgroundColor: "#292929",
     width: "100%",
     [theme.breakpoints.down("sm")]: {
       width: "auto",
@@ -36,16 +37,17 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "#212120",
+    color: "#959595",
   },
   inputRoot: {
-    color: "#212120",
+    color: "#959595",
     width: "100%",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create("width"),
     width: "100%",
+
     [theme.breakpoints.up("md")]: {
       width: 200,
     },

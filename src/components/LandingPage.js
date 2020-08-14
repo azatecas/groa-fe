@@ -10,10 +10,9 @@ import {
   loginAction,
 } from "../store/actions/index.js";
 
+import Copyright from "./Copyright.js";
 import LandingMovieSlider from "./LandingMovieSlider";
-import Box from "@material-ui/core/Box";
 import { Link, useHistory } from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
 import LandingNavLinks from "./layout/nav-layouts/LandingNavLinks";
 import { makeStyles } from "@material-ui/core";
 import headerImg from "../img/watching-tv.png";
@@ -87,23 +86,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  background: {
+    background: "linear-gradient(180deg, #000A12 0%, #545454 94.14%)",
+  },
 }));
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="white" to="https://github.com/Lambda-School-Labs/Groa-fe">
-        GROÁ
-      </Link>{" "}
-      2020
-      {"."}
-      <Link color="white" to="https://groa.us/privacy-policy">
-        GROÁ Privacy Policy
-      </Link>
-    </Typography>
-  );
-}
 
 const LandingPage = ({
   //actions destructured from props
@@ -163,7 +149,7 @@ const LandingPage = ({
   }, []);
 
   return (
-    <div>
+    <div className={styles.background}>
       <div className={styles.testDiv}>
         <div className={styles.onboardingNav}>
           <LandingNavLinks />
@@ -171,7 +157,7 @@ const LandingPage = ({
 
         <header className={styles.jumbotron}>
           <div className={styles.title}>
-            <h1>Welcome to Groa</h1>
+            <h1>Welcome to Gróa</h1>
             <p>The unbiased movie recommendation platform</p>
             <p>for movie fans by movie fans!</p>
             <Link to="/register">
@@ -211,9 +197,8 @@ const LandingPage = ({
           heading={"Staff's Favorite Movies"}
         />
       </div>
-      <Box mt={3}>
-        <Copyright />
-      </Box>
+
+      <Copyright />
     </div>
   );
 };

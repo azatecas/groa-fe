@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import { Security, SecureRoute, LoginCallback } from "@okta/okta-react";
 
 // local imports
+import BannerNav from "./components/dashboard/BannerNav.js";
 import Recommendations from "./components/dashboard/Recommendations.js";
 import Navigation from "./components/dashboard/Navigation.js";
 import Register from "./components/auth/Register";
@@ -73,6 +74,7 @@ function App() {
       }),
     []
   );
+
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
@@ -94,7 +96,7 @@ function App() {
                   "/:user_id/upload",
                   "/:user_id/ratings",
                 ]}
-                component={Navigation}
+                component={BannerNav}
               />
               <SecureRoute
                 exact

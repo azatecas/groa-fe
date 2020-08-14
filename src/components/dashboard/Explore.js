@@ -21,11 +21,12 @@ const useStyles = makeStyles((theme) => ({
   Title: {
     fontSize: "3rem",
     textAlign: "center",
-    paddingTop: "2%",
+    paddingTop: "1%",
+    color: "white",
   },
   cardGrid: {
     maxWidth: "1425px",
-    padding: "2.5rem",
+    padding: "1.5rem",
     margin: "0 auto",
   },
   movieCard: {
@@ -80,7 +81,7 @@ function Explore({
   ]);
 
   // How many movies render
-  const cardAmount = 40;
+  const cardAmount = 60;
 
   if (isFetching) return <LoadingScreen />;
   else
@@ -109,8 +110,6 @@ function Explore({
               )
               .slice(0, cardAmount)
               .map((movie, index) => {
-                console.log("this is the movie ", movie);
-
                 /* Checks if the film is in ratings */
                 const isRated = (film) => {
                   return film.title === movie.title && film.year === movie.year;

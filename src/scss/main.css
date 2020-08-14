@@ -101,9 +101,22 @@
   text-transform: lowercase;
 }
 
+#root .footer {
+  background-color: #101010;
+  margin-top: 1rem;
+  padding: 2rem 0;
+  width: 100%;
+  text-align: center;
+}
+
+#root .footer a {
+  text-decoration: none;
+  color: white;
+}
+
 #root .App {
   min-height: 100vh;
-  background-color: #212120;
+  background-color: #020c14;
 }
 
 #root #grid {

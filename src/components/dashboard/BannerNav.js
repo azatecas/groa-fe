@@ -80,9 +80,6 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "column",
       margin: "1rem 0",
     },
-    Banner: {
-      height: "20vh",
-    },
   },
 }));
 
@@ -130,12 +127,6 @@ const BannerNav = ({ userid, search }) => {
           Logout
         </MenuItem>
       </Toolbar>
-      <img
-        id="banner"
-        className={classes.Banner}
-        src={Banner}
-        alt="Groa Banner"
-      />
       <div id="stickyNav" className={classes.navs}>
         <Navbar expand="md">
           <button

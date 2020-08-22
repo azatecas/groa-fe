@@ -14,7 +14,6 @@ const Copyright = () => {
       <Link color="white" to="/">
         GROÁ FOUNDATION INC
       </Link>{" "}
-      {"."}
       <Link color="white" to="/privacy-policy">
         GROÁ Privacy Policy
       </Link>

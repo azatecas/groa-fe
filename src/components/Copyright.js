@@ -11,12 +11,10 @@ const Copyright = () => {
       align="center"
     >
       {"Copyright © "}
-      <Link color="white" to="https://github.com/Lambda-School-Labs/Groa-fe">
-        GROÁ
+      <Link color="white" to="/">
+        GROÁ FOUNDATION INC
       </Link>{" "}
-      2020
-      {"."}
-      <Link color="white" to="https://groa.us/privacy-policy">
+      <Link color="white" to="/privacy-policy">
         GROÁ Privacy Policy
       </Link>
     </Typography>

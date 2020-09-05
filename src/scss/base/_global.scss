@@ -2,12 +2,13 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   box-sizing: border-box;
-  
+
   * {
-    box-sizing: inherit;
+    box-sizing: border-box;
   }
-  
+
   @-webkit-keyframes flexGrow {
     to {
       flex: 1;
@@ -25,20 +26,20 @@ body {
   }
   @-webkit-keyframes flexShrink {
     to {
-      flex: .01;
-      flex: .00001;
+      flex: 0.01;
+      flex: 0.00001;
     }
   }
   @-o-keyframes flexShrink {
     to {
-      flex: .01;
-      flex: .00001;
+      flex: 0.01;
+      flex: 0.00001;
     }
   }
   @keyframes flexShrink {
     to {
-      flex: .01;
-      flex: .00001;
+      flex: 0.01;
+      flex: 0.00001;
     }
   }
 }

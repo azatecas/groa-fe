@@ -4,7 +4,8 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 // styling
-import "./css/main.css";
+import "./scss/main.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

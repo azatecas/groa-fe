@@ -93,9 +93,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   movieCard: {
+    padding: ".3rem",
     "&:hover": {
       transform: "scale(1.1)",
     },
+  },
+  carousel: {
+    overflow: "hidden",
   },
 }));
 
@@ -134,6 +138,7 @@ export const RatingsTileBar = ({ movies }) => {
       itemClass="carousel-item-padding-1-px"
       customLeftArrow={<CustomLeftArrow />}
       customRightArrow={<CustomRightArrow />}
+      className={styles.carousel}
     >
       {movies.map((movie, index) => {
         let posterURI = movie.poster_url;
@@ -171,10 +176,7 @@ export const RatingsTileBar = ({ movies }) => {
 
 const CustomRightArrow = ({ onClick, ...rest }) => {
   const styles = useStyles();
-  const {
-    onMove,
-    carouselState: { currentSlide, deviceType },
-  } = rest;
+
   // onMove means if dragging or swiping in progress.
   return (
     <button className={styles.customArrow} onClick={() => onClick()}>
@@ -186,10 +188,6 @@ const CustomRightArrow = ({ onClick, ...rest }) => {
 
 const CustomLeftArrow = ({ onClick, ...rest }) => {
   const styles = useStyles();
-  const {
-    onMove,
-    carouselState: { currentSlide, deviceType },
-  } = rest;
   // onMove means if dragging or swiping in progress.
   return (
     <button className={styles.leftArrow} onClick={() => onClick()}>

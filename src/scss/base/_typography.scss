@@ -14,6 +14,7 @@ h5,
 h6 {
   font-weight: bold;
   margin: 0;
+
   a {
     font-weight: inherit;
   }
@@ -23,12 +24,28 @@ h6 {
 em {
   font-style: italic;
 }
+
 strong {
   font-weight: bold;
 }
+
 .uppercase {
   text-transform: uppercase;
 }
+
 .lowercase {
   text-transform: lowercase;
+}
+
+.footer {
+  background-color: #545454;
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+  width: 100%;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }

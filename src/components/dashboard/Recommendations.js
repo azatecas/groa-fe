@@ -27,15 +27,19 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardGrid: {
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
-    paddingRight: theme.spacing(1),
-    paddingLeft: theme.spacing(1),
+    maxWidth: "1425px",
+    padding: "2.5rem",
   },
   movieCard: {
     "&:hover": {
       transform: "scale(1.1)",
       transitionDuration: ".5s",
+    },
+  },
+  [theme.breakpoints.down("xl")]: {
+    cardGrid: {
+      maxWidth: "2000px",
+      margin: "0 auto",
     },
   },
 }));
@@ -84,7 +88,6 @@ function Recommendations({
                 : true
             )
             .map((movie, index) => {
-              console.log('this is the movie ', movie)
               let posterURI = movie.poster_url;
               let unsplashUrl =
                 "https://source.unsplash.com/collection/1736993/500x650";

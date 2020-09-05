@@ -10,9 +10,7 @@
     padding-right: 1rem;
 
     @media only screen and (max-width: 750px) {
-
       justify-content: space-around;
-
     }
 
     .Bars {
@@ -24,16 +22,15 @@
       }
     }
 
-
     .Links {
       width: 60%;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
-      margin: 0 .4rem;
+      margin: 0 0.4rem;
 
       a.active {
-        border-bottom: 3px solid #00E6BC;
+        border-bottom: 3px solid #00e6bc;
       }
 
       img {
@@ -60,12 +57,11 @@
     }
 
     @media only screen and (max-width: 600px) {
-
       .watchlist,
       .recommended,
       .explore,
       .dropdown-hover .angle-down-icon {
-        flex: .000000001;
+        flex: 0.000000001;
         white-space: pre;
         padding: 0;
         font-size: 0;
@@ -76,7 +72,7 @@
 
     .searchContainer {
       background-color: $gray2;
-      padding: .4rem;
+      padding: 0.4rem;
       border-radius: 5px;
       display: flex;
       flex: 1;
@@ -94,9 +90,9 @@
       .search-icon,
       .backspace-icon {
         color: white;
-        opacity: .4;
+        opacity: 0.4;
         font-size: 1.2rem;
-        padding: .2rem;
+        padding: 0.2rem;
       }
 
       .backspace-icon {
@@ -128,8 +124,8 @@
     button {
       white-space: nowrap;
       font-size: 1rem;
-      padding: .4rem;
-      margin: 0 .6rem;
+      padding: 0.4rem;
+      margin: 0 0.6rem;
       border-radius: 5px;
       background-color: $white;
       cursor: pointer;
@@ -145,7 +141,7 @@
 
       button {
         font-size: 0;
-        padding: .2rem;
+        padding: 0.2rem;
         background-color: rgba(28, 28, 28, 0);
         border: none;
       }
@@ -173,7 +169,7 @@
   .searchContainer.hidden,
   .hidden {
     min-width: 0;
-    flex: .000000001;
+    flex: 0.000000001;
     white-space: pre;
     padding: 0;
     font-size: 0;
@@ -182,7 +178,7 @@
   }
 
   .dropdown-hover {
-    padding: .25rem .5rem;
+    padding: 0.25rem 0.5rem;
     position: relative;
     white-space: nowrap;
     cursor: pointer;
@@ -190,7 +186,7 @@
     align-items: center;
 
     .angle-down-icon {
-      padding-left: .5rem;
+      padding-left: 0.5rem;
     }
 
     .dropdown-content {
@@ -203,7 +199,7 @@
         flex-direction: column;
         position: absolute;
         top: 2rem;
-        right: .4rem;
+        right: 0.4rem;
         border-radius: 5px;
         overflow: hidden;
         z-index: 5;
@@ -223,7 +219,7 @@
             background-color: $gray1;
           }
 
-          @media(hover: hover) and (pointer: fine) {
+          @media (hover: hover) and (pointer: fine) {
             &:hover {
               background-color: $gray1;
             }
@@ -231,7 +227,7 @@
         }
 
         .watchlist-menu {
-          display: none
+          display: none;
         }
 
         .recommended-menu,
@@ -240,9 +236,8 @@
         }
 
         @media only screen and (max-width: 750px) {
-
           .watchlist-menu {
-            display: none
+            display: none;
           }
 
           .recommended-menu,
@@ -253,5 +248,15 @@
       }
     }
   }
+}
 
+.stickyNavBanner {
+  margin-bottom: 6.5rem;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
 }

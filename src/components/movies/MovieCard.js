@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../../utils/axiosWithAuth.js";
+import axios from "axios";
 import { connect } from "react-redux";
 import {
   ratingAction,
@@ -32,6 +33,13 @@ import { useOktaAuth } from "@okta/okta-react/dist/OktaContext";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+//Shortcut Links Pictures
+import Netflix from "../../img/netflix.png";
+import Amazon from "../../img/amazon.png";
+import Hulu from "../../img/hulu_trans.png";
+import DPlus from "../../img/dplus.png";
+import Prime from "../../img/prime.png";
 
 const styles = (theme) => ({
   closeBtn: {
@@ -71,9 +79,8 @@ const useStyles = makeStyles((theme) => ({
   },
   movieImg: {
     width: "100%",
-    height: "375px",
-    borderRadius: "11px",
-    objectFit: "contain",
+    height: "450px",
+    borderRadius: "5px",
   },
   name: {
     fontSize: "15px",
@@ -101,7 +108,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "100%",
+    height: "450px",
     padding: "1%",
+    margin: ".5rem 0",
   },
   cardActions: {
     fontSize: "10px",
@@ -161,29 +170,29 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
   yearGenreModal: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding:"2% 0"
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "2% 0",
   },
   year: {
-    fontSize: "18px",  
+    fontSize: "18px",
   },
   genresModal: {
     fontStyle: "italic",
-    display:'flex',
-    alignItems:'center',
+    display: "flex",
+    alignItems: "center",
   },
   rateGenreModal: {
-    display: 'flex',
+    display: "flex",
   },
   imdbImg: {
-    height: '40%',
+    height: "40%",
   },
   avgRatingModal: {
     fontSize: "1rem",
     paddingLeft: "3%",
-    display:'flex',
-    alignItems:'center',
+    display: "flex",
+    alignItems: "center",
   },
   actionButtons: {
     display: "flex",
@@ -283,6 +292,53 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "9vw",
     },
   },
+  // Shortcut Provider Links
+  shortLinks: {
+    // border: "red solid 1px",
+    background: "rgba(52, 52, 50)",
+    marginLeft: "-35px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    "&:hover": {
+      zIndex: 1,
+    },
+  },
+  shortProviders: {
+    display: "flex",
+  },
+  [theme.breakpoints.up("xs")]: {
+    shortLinks: {
+      background: "rgba(52, 52, 50, 0.9)",
+      marginLeft: "-30px",
+      "&:hover": {
+        zIndex: 1,
+      },
+    },
+    shortLinksImg: {
+      width: "30px",
+      "&:hover": {
+        width: "50px",
+      },
+    },
+  },
+  [theme.breakpoints.up("md")]: {
+    shortLinks: {
+      marginLeft: "-45px",
+    },
+    shortLinksImg: {
+      width: "35px",
+      margin: "0 6px",
+    },
+  },
+  [theme.breakpoints.up("xl")]: {
+    shortLinks: {
+      marginLeft: "-55px",
+    },
+    shortLinksImg: {
+      width: "45px",
+    },
+  },
 }));
 
 // more fields will be appearing according to the Figma file
@@ -316,6 +372,9 @@ function MovieCard({
   const [serviceProvider, setServiceProvider] = useState([]);
   const [yourRating, setYourRating] = useState(false);
 
+  // placeholder image
+  const missingImg =
+    "https://images.unsplash.com/photo-1515198392621-a3f3588028c4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=650&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=500";
   /* Used for the star rating */
   const [rating, setRating] = useState(0);
   /* Used for dynamically rendering the "Add to watchlist" button and if it's disabled */
@@ -339,9 +398,11 @@ function MovieCard({
   );
   //material-ui
   const classes = useStyles();
-  const [openModal, setOpenModal] = React.useState(false);
+  const [openModal, setOpenModal] = useState(false);
   //for button group
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  // used for poster images if they are missing.
+  const [posterImg, setPosterImg] = useState(image);
 
   const handleOpen = () => {
     setOpenModal(true);
@@ -387,7 +448,6 @@ function MovieCard({
     setRemoved(true);
   };
   const handleClickDeleteFromWatchlist = () => {
-    console.log("thisi sin move", movie_id);
     removeWatchListAction(userid, movie_id, accessToken);
     setDeleted(true);
     handleClose();
@@ -397,7 +457,6 @@ function MovieCard({
       .get(`${userid}/service-providers/${movie.movie_id}`)
       .then((res) => {
         setServiceProvider(res.data);
-        console.log("data", res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -411,13 +470,123 @@ function MovieCard({
   };
   const onboardingRating = () => {
     setNumRatings({ ...numRatings, num: numRatings.num + 1 });
-    console.log("number of ratings is " + numRatings.num);
-    console.log("openalert");
   };
+  const moviePosterCheck = (imgURL) => {
+    axios.get(imgURL).catch(() => {
+      setPosterImg("https://source.unsplash.com/collection/1736993/500x650");
+    });
+  };
+
+  useEffect(() => {
+    handleClickProviders();
+    moviePosterCheck(posterImg);
+  }, []);
+
   return (
     <div className={classes.card}>
-      <div className={classes.modalBtn} onClick={handleOpen}>
-        <img className={classes.movieImg} src={image} alt={movie.name} />
+      <div className={classes.shortProviders}>
+        <img
+          className={classes.movieImg}
+          src={posterImg}
+          alt={movie.name}
+          onClick={handleOpen}
+        />
+        {page === "Ratings" ? (
+          ""
+        ) : (
+          <div className={classes.shortLinks}>
+            {serviceProvider.map((serviceProviders) => {
+              if (
+                serviceProviders.provider_id === 10 &&
+                serviceProviders.presentation_type === "sd" &&
+                serviceProviders.monetization_type === "buy"
+              ) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={Amazon}
+                      alt="Amazon"
+                    />
+                  </Link>
+                );
+              }
+              if (serviceProviders.provider_id === 8) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={Netflix}
+                      alt="Netflix"
+                    />
+                  </Link>
+                );
+              }
+              if (
+                serviceProviders.provider_id === 10 &&
+                serviceProviders.monetization_type === "rent"
+              ) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={Prime}
+                      alt="Amazon Prime"
+                    />
+                  </Link>
+                );
+              }
+              if (
+                serviceProviders.provider_id === 15 &&
+                serviceProviders.presentation_type === "sd"
+              ) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={Hulu}
+                      alt="Hulu"
+                    />
+                  </Link>
+                );
+              }
+              if (
+                serviceProviders.provider_id === 337 &&
+                serviceProviders.presentation_type === "sd"
+              ) {
+                return (
+                  <Link
+                    key={serviceProviders.provider_id}
+                    href={serviceProviders.link}
+                    target="_blank"
+                  >
+                    <img
+                      className={classes.shortLinksImg}
+                      src={DPlus}
+                      alt="Disney Plus"
+                    />
+                  </Link>
+                );
+              }
+            })}
+          </div>
+        )}
       </div>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -437,7 +606,11 @@ function MovieCard({
               <></>
             </DialogTitle>
             <div className={classes.movieInfoModal}>
-              <img className={classes.movieImgModal} src={image} alt={name} />
+              <img
+                className={classes.movieImgModal}
+                src={posterImg}
+                alt={name}
+              />
 
               <div className={classes.movieContentDiv}>
                 <CardContent className={classes.cardContentModal}>
@@ -448,10 +621,17 @@ function MovieCard({
                   </div>
                   <p className={classes.descriptionModal}>{description}</p>
                   {page === "Recommendations" ? (
-                  <div className={classes.rateGenreModal}>
-                    <img classaName={classes.imdbImg} src="https://img.icons8.com/color/48/000000/imdb.png" />
-                    <p className={classes.avgRatingModal}> {avg_rating * 2 }/10</p>
-                  </div>
+                    <div className={classes.rateGenreModal}>
+                      <img
+                        classaName={classes.imdbImg}
+                        src="https://img.icons8.com/color/48/000000/imdb.png"
+                        alt={name}
+                      />
+                      <p className={classes.avgRatingModal}>
+                        {" "}
+                        {avg_rating * 2}/10
+                      </p>
+                    </div>
                   ) : (
                     ""
                   )}
@@ -483,13 +663,13 @@ function MovieCard({
                       <Button
                         onClick={handleClickRemove}
                         className={classes.watchList}
-                        disabled={removed || notInWatchlist ? true : false}
+                        disabled={removed || notInWatchlist ? false : false}
                         size="small"
                         color="primary"
                       >
                         {!removed && !notInWatchlist
                           ? "Not Interested"
-                          : "Removed from Results"}
+                          : "Not Interested"}
                       </Button>
                     </CardActions>
                   ) : (
@@ -536,7 +716,6 @@ function MovieCard({
                       className={classes.starsModal}
                       size="large"
                       precision={0.5}
-                      emptyIcon={<StarBorderIcon fontSize="inherit" />}
                       emptyIcon={
                         <StarBorderIcon
                           fontSize="inherit"
@@ -555,7 +734,6 @@ function MovieCard({
                       className={classes.starsModal}
                       size="large"
                       precision={0.5}
-                      emptyIcon={<StarBorderIcon fontSize="inherit" />}
                       emptyIcon={
                         <StarBorderIcon
                           fontSize="inherit"
@@ -576,7 +754,6 @@ function MovieCard({
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                         className={classes.expansionPanalSummary}
-                        onClick={handleClickProviders}
                       >
                         <Typography className={classes.heading}>
                           Where to Watch
@@ -585,7 +762,7 @@ function MovieCard({
                       <div className={classes.serviceInfo}>
                         {serviceProvider.map((serviceProviders) => {
                           return (
-                            <div>
+                            <div key={serviceProviders.link}>
                               <Link
                                 href={serviceProviders.link}
                                 className={classes.Link}

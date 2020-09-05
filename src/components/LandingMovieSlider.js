@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import { TileBar } from "./TileBar";
 import ReactLoading from "react-loading";
 import "react-multi-carousel/lib/styles.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 //styling for Landing Movie Slider Component
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -15,9 +15,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     transitionDuration: ".5s",
     position: "relative",
-    ["@media (max-width:500px)"]: {
-      width: "100%",
-    },
   },
   recBtn: {
     fontFamily: `"Work Sans", sans-serif`,
@@ -52,10 +49,6 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     transitionDuration: ".2s",
     fontWeight: "900",
-    ["@media (max-width:800px)"]: {
-      width: "100%",
-      margin: "2vh auto",
-    },
   },
   btnClose: {
     fontFamily: `"Work Sans", sans-serif`,
@@ -74,10 +67,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     cursor: "pointer",
     transitionDuration: ".5s",
-    ["@media (max-width:800px)"]: {
-      width: "15%",
-      fontSize: "12px",
-    },
   },
   recMovies: {
     backgroundColor: "rgba(125, 125, 125, 1)",

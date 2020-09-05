@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
-
 import { Security, SecureRoute, LoginCallback } from "@okta/okta-react";
 
 // local imports
@@ -19,7 +18,7 @@ import PostOnboarding from "./components/auth/PostOnboarding";
 import PrivacyPolicy from "./components/layout/privacy-policy.js";
 import LandingPage from "./components/LandingPage";
 
-// for testing
+// import for testing
 import { ifDev } from "./utils/removeAttribute.js";
 import oktaConfig from "./config/oktaConfig";
 
